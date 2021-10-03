@@ -11,3 +11,4 @@ Struktura repozitáře:
 --------------------------------------------------------------
 
 Pokud do repozitáře nahrávate nějaké změny, ujistěte se, že nahrávate všechny zmíněné části ve stejné verzi.
+
