@@ -1,0 +1,56 @@
+%01/10/2021
+\section{Úvod}
+
+\begin{definition}
+Mříž v $n$-dimenzionálním prostoru je množina $L\subseteq\Real^n$ taková, že $\exists b_1,b_2,\ldots,b_d \in \Real^n, \LN \text{(nad $\Real$)}$ tak, že  $L=\Z b_1+Z b_2+\cdots+\Z b_d=\{z_1 b_1 + z_2 b_2 + \cdots + z_d b_d|z_1,\ldots z_d \in \Z\}$.
+\end{definition}
+
+\begin{note}
+$\{b_1,b_2,\ldots,b_d \}$ se nazývá \emph{báze $L$}. Není určená jednoznačně. $d=\dimenze<\!L\!>$, $d$ je hodnost (rank) určená množinou $L$, $0\leq d\leq n$.
+\end{note}
+
+\subsection{\texorpdfstring{Algebraická struktura mříží}{Algebraická struktura mrizi}}
+\begin{itemize}
+    \item $L$ je komutativní grupa (podgrupa grupy $(R^n,+)$)
+    \item $L$ je konečně generovaná (báze je množina generátorů)
+    \item $L$ je beztorzní ($\forall z\in \Z\ \forall \underline{l} \in L: z\cdot \underline{l}=0\implies z=0\vee \underline{l}=0$)
+\end{itemize} 
+
+\begin{theorem}
+Každá beztorzní konečně generovaná komutativní grupa je volná.
+\end{theorem}
+
+\begin{consequence}
+$(L,+)\simeq (\Z^d,+)$
+\end{consequence}
+
+\begin{definition}[Euklidovská norma v $\Real^n$]
+Nechť $u=\begin{pmatrix}
+u_1 \\
+\vdots \\
+u_n
+\end{pmatrix}$,
+$v=\begin{pmatrix}
+v_1 \\
+\vdots \\
+v_n
+\end{pmatrix}$. Potom standradní skalární součin $\cdot$ definujeme jako $u\cdot v= \sum_{i=1}^n u_iv_i=u^Tv$.
+\emph{Euklidovskou normu} definujeme jako $\|u\|:=\sqrt{u\cdot u}=\big( \sum_{i=1}^n u_iv_i \big)^{\frac{1}{2}}$.
+\end{definition}
+
+\subsection{\texorpdfstring{Rozložení mříže v $\Real^n$}{Rozlození mrize v R\^\ n}}
+
+\begin{definition}[Diskrétní podgrupy $(\Real^n,+)$]
+Podgrupa $G\subseteq(\Real^n,+)$ je \emph{diskrétní}, pokud $$\forall g\in G\ \exists \varepsilon>0 :  G\cap\{v\in\Real^n|\|v-g\|<\varepsilon\}=\{0\}\text{.}$$
+\end{definition}
+\begin{observation}
+$G\subseteq(\Real^n,+)$ je diskrétní $\iff \exists\varepsilon>0:
+G\cap\{v\in\Real^n|\|v\|<\varepsilon\}=\{0\}$
+\end{observation}
+\begin{proof}
+$\Rightarrow \checkmark$
+
+$\Leftarrow$ vezmi $\varepsilon>0$ tak, aby platila pravá strana tvrzení. Zvol $g \in G$ libovolné. Potom pro každé $v\in G$ splňující $\|v-g\|<\varepsilon$ platí $v=g$, neboť $v-g\in G$ a tedy z předpokladu $v-g=0$.
+
+Celkem tedy $G\cap \{v\in\Real^n|\|v-g\|<\varepsilon\}=\{g\}$.
+\end{proof}
