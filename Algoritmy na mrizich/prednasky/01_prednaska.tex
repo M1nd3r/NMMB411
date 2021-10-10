@@ -54,3 +54,78 @@ $\Leftarrow$ vezmi $\varepsilon>0$ tak, aby platila pravá strana tvrzení. Zvol
 
 Celkem tedy $G\cap \{v\in\Real^n|\|v-g\|<\varepsilon\}=\{g\}$.
 \end{proof}
+
+\begin{consequence}
+Je-li $G\subseteq (\Real^n,+)$ diskrétní, pak $\forall M\in\Real^+\ |\{g\in G| \|g\|<M\}|<\infty$.
+\end{consequence}
+\begin{proof}
+$B_M:=\{v\in\Real^n| \|v\|<M\}$, $B_\varepsilon:=\{v\in\Real^n| \|v\|<\varepsilon\}$, kde $\varepsilon>0$ splňuje $B_\varepsilon\cap G=\{0\}$.
+$X:=G\cap B_M$, $B_{\frac{\varepsilon}{2}}:=\{v\in\Real^n| \|v\|<\frac{\varepsilon}{2}\}$. 
+Potom $\forall g_1, g_2\in G: g_1\neq g_2\implies(g_1+B_{\frac{\varepsilon}{2}})\cap(g_2+B_{\frac{\varepsilon}{2}})=\emptyset $, neboť $\|g_1-g_2\|\geq \varepsilon$.
+\begin{align*}
+    \bigcupdot_{x\in X} x+B_{\frac{\varepsilon}{2}}&\subseteq B_{M+\varepsilon}\\
+    |X|\cdot \vol(B_{\frac{\varepsilon}{2}})&\leq \vol(B_{M+\varepsilon})\\
+    |X|&\leq \frac{\vol(B_{M+\varepsilon})}{\vol(B_{\frac{\varepsilon}{2}})}<\infty\\
+\end{align*}
+\end{proof}
+
+\begin{claim}
+Každá $n$-dimenzionální mříž je diskrétní podgrupa $(\Real^n,+)$.
+\end{claim}
+
+\begin{proof}
+Indukcí dle hodnosti mříže $L(d)$. (Případ $d=0$ platí, ale vynecháme jej.) \\
+\fbox{$d=1$} tj. $\exists _1 \in \Real^n$, $b_1\neq 0$, $L=\Z b_1$ $0\neq b\in L\iff l=z b_1,\ z\in \Z\setminus\{0\}$.\\
+$\|l\|=|z|\cdot\|b_1\|\geq\|b_1\|\implies \varepsilon=\|b_1\|$ projde.\\
+\fbox{$d>1$} $\{b_1,\ldots,b_d\}$ báze L. Definujme $L_0=\Z b_1+\Z b_2 + \cdots +\Z b_{d-1}$. 
+To odpovídá bázi $\{b_1,\ldots,b_{d-1}\}$, potom z indukčního předpokladu $\exists \varepsilon_0>0$ takové, že $\forall l\in L_0\setminus\{0\}\  \|l\|\geq \varepsilon_0$.
+Platí, že $\Real^n=\langle L_0\rangle\oplus\langle L_0\rangle^\perp$. Z toho plyne $\forall v\in\Real^n\ \exists v_0, v^\perp\in\Real^n\ v=v_0+v^\perp,\ v_0\in\langle L_0\rangle,\ v^\perp\in\langle L_0 \rangle^\perp$.$$0\neq l = z_1 b_1+z_2 b_2+\cdots+z_d b_d,\ z_1,\ldots,z_d\in\Z$$
+
+\begin{enumerate}
+    \item $z_d=0\implies l\in L_0\setminus\{0\}\overset{\text{I.P.}}{\implies}\|l\|\geq \varepsilon_0$ a důkaz je hotov, nebo
+    \item $z_d\neq0\ \ldots\ l=l_0+l^\perp\implies\|l\|\geq\|l^\perp\|=\|z_db_d^\perp\|$\\
+    $b_d\notin L_0$, neboť $b_1,\ldots,b_d$ jsou $\LN\implies b_d=\underset{\in L_0}{b_{d_0}}+\underset{\neq\emptyset}{b_d^\perp} \implies \|l\|\geq|z_d|\cdot \|b_d^\perp\|\geq\|b_d^\perp\|>0$.\\
+    Tedy platí, že $\|l\|\geq\min\{\varepsilon_0,\|b_d^\perp\|\}$
+\end{enumerate}
+\end{proof}
+
+\section{\texorpdfstring{Výpočetní problémy na mřížích}{Vypocetni problemy na mrizich}}
+SVP - shortest vector problem
+
+\begin{definition}[První postupné minimum]
+Nechť $0\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. Definujeme \emph{první postupné minimum} 
+$\lambda_1(L):=\min\{\|v\|:0\neq v\in L\}$. 
+Toto minimum existuje, neboť $\forall l: 0\neq l\in L,\ \{v\in L\setminus\{0\}:\|v\|\leq\|l\|\}$ je konečná.
+\end{definition}
+
+\begin{definition}[Nejkratší vektor $L$] 
+Nechť $0\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. $v$ je \emph{nejkratší vektor} $L$, pokud $\|v\|=\lambda_1(L)$
+\end{definition}
+
+\begin{note}
+$v$ je nejkratší vektor $L\iff -v$ je nejkratší vektor $L$.
+\end{note}
+
+\begin{note}
+$L=\Z^2\subseteq(\Real^2,+)$ má tyto nejkratší vektory: $\vect{0}{1},\vect{0}{-1},\vect{1}{0},\vect{-1}{0}$.
+\end{note}
+
+\begin{definition}[Formulace $\SVP$]\phantom{}\\
+Vstup: Mříž zadaná bází.\\
+Výstup: Nejkratší vektor $L$ (stačí jeden libovolný).
+\end{definition}
+
+\begin{theorem}[M. Ajtai, 1998]
+$\SVP$ je $\NP$-hard ($\,\NP$-těžký).
+\end{theorem}
+
+\begin{definition}[$\SVP_\gamma$]
+(aproximační verze $\SVP$)\\
+Definujeme aproximační faktor $\gamma:\N\rightarrow\Real^+$.\\
+Vstup $\SVP_\gamma$: $n$-dimenzionální mříž zadaná bází.\\
+Výstup: $0\neq v\in L$ takový, že $\forall 0\neq v \in L: \gamma(n)\cdot\|u\|\geq\|v\|$.
+\end{definition}
+
+\begin{theorem}[A. K. Lenstra, H. W. Lenstra, L. G. Lowász, 1982]
+$$\SVP_{2^\frac{n-1}{2}}$$ je řešitelný v polynomiálním čase.
+\end{theorem}

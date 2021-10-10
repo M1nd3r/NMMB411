@@ -1,0 +1,163 @@
+%08/10/2021
+\begin{definition}[Gap SVP$_\gamma$]
+(rozhodovací verze SVP$_\gamma$)\\
+$L \subseteq (\Real ^n, +)$ mříž, úplná ( hodnost = $n$), víme, že $\lambda_1(L) \leq 1 $ nebo $\lambda_1(L) \geq \gamma(n)$. Máme rozhodnout, který případ nastává.
+\end{definition}
+
+\textbf{Learning with errors}: Odvozuje se od BDD$_\gamma$ (bounded distance decoding) 
+
+\begin{definition}[BDD$_\gamma$ - bounded distance decoding]
+$L \subseteq (\Real^n, +), v\in \Real^n$. Víme: $dist(v,L) < \frac{\lambda_1(L)}{2\gamma(n)}$. Chceme najít vektor $l\in L$, který tuto nerovnost dokazuje, tedy splňuje $$\|v-l\| < \frac{\lambda_1(L)}{2 \gamma(n)}$$.
+\end{definition}
+
+\begin{note}
+$l_1 \neq l_2 \in L$, $\|l_1-l_2\| \geq \lambda_1(L)$
+
+Pak  $ |\{u \in \Real^n : \|u-v\|<\frac{\lambda_1(L)}{2} \cap L\}| \leq 1$
+\end{note}
+
+\begin{definition}[$i$-té postupné minimum]
+$L \subseteq (\Real^n, +)$ mříž hodnosti d. Pro $i \in \{1, \dots, d\}$ definujeme \emph{i-té postupné minimum} $\lambda_i(L) = \min\{r \in \Real: L \text{obsahuje i LN vektorů normy } \leq r\}$
+\end{definition}
+
+\begin{definition}[SIVP$_\gamma$ - short independent vectors problem]
+Dána $L \subseteq (\Real^n, +) $ úplná. Chceme nalézt $S = \{s_1, \ldots, s_n\} \subseteq L$ lineárně nezávislé tak, aby $\|s_i\|\leq\gamma(n)\cdot\lambda_n(L)$.
+\end{definition}
+
+\begin{definition}[SIS$_{n,q,s,m}$ - short integer soultion]
+Nechť $q \in \N$. Volíme náhodně $a_1, a_2, \dots, a_m \in \Z^n_q$. $A:= (a_1|a_2|\cdots|a_m),\ n \times m$ nad $\Z_q$. Chceme najít $0 \neq t\in\Z^m \  \|z\|\leq\beta, Az\equiv0\ (\modulo q)$
+\end{definition}
+
+\begin{note}
+$L = \{n \in \Z^m: An \equiv 0\ (\modulo q)\}$ je celočíselná mříž obsahující $q:\Z^m$ ($q$-ární mříž)
+\end{note}
+
+\begin{example}
+$2^m > q^n (m > n \cdot \log (q))$. Vezmeme $f_A: \{0,1\}^m \rightarrow \Z^n_q \ f_A(n):=An\ \modulo q$
+
+$\exists u_1 \neq u_2 \in \{0,1\}^m: f_A(u_1) = f_A(u_2)$
+
+$z=u_1-u_2\in\{0,1\}^m, O<\|z\|\leq\sqrt{m},\ Az\equiv0\ (\modulo q)$.
+
+Potom $z$ řeší SIS$_{n,q,\sqrt{m},n}$.
+\end{example}
+
+\begin{theorem}[M. Ajatai, 1996]
+Nechť $m=\poly(n), q\geq\beta\poly(n)$. Pokud existuje algoritmus řešící SIS$_{n,q,\beta,n}$ s nezanedbatelnou pravděpodobností, pak existuje srovnatelně efektivní algoritmus, který řeší SIVP$_\gamma$ s nezanedbatelnou pravděpodobností pro všechny instance $n-$dimenzionálních mříží, kde $\gamma=\poly(n)\cdot\beta$.
+\end{theorem}
+
+\begin{example}
+Nechť $2^m>q^n$, $\beta\geq\sqrt{m}$.
+Díváme se na $\{f_A: A \in M_{n,m}(t_q)\}$ jako na množinu hashovacích funkcí, která má $q^n$ prvků. Hledáme v ní náhodnou kolizi (speciální případ SIS$_{n,q, \beta,m}$).
+
+Důkaz obtížnosti SIVP$_\gamma$ pro odpovídající $\gamma$ povede k důkazu obtížností problému hledání kolizí.
+\end{example}
+
+\section{\texorpdfstring{Lineární algebra nad $\Z$}{Linearni algebra na Z}}
+\begin{definition}[volná grupa]
+konečně generovaná komutativní grupa $G$ je \emph{volná}, pokud $\exists b_1, b_2, \dots, b_d \in G$ takové, že $\forall g \in G\ \ \exists ! z_1, z_2, \dots, z_d \in \Z$ tak, aby $g = z_1 b_1 +  z_2b_2 + \dots + z_d b_d$. Množina $\{b_1,b_2, \dots, b_d\}$ se nazývá \emph{volná báze $G$}.
+\end{definition}
+
+\begin{note}
+$G = O$ volná grupa s volnou bází $\emptyset$
+
+$L \subseteq (\Real^n, +)$ mříž. Potom báze mříže je volná báze grupy $(L,+)$
+
+$(\Z^n, +)$ Potom volná báze např. $\{e_1, e_2, \dots , e_n\}, e_1 = \begin{pmatrix}
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}, \dots,
+e_n=\begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+1
+\end{pmatrix}$
+\end{note}
+
+
+\begin{claim}
+Konečně generovaná volná grupa je izomorfní $(\Z^n,+)$ pro nějaké $n\in\N$.
+\end{claim}
+\begin{proof}
+$G$ s volnou bází is $\{b_1,+\ldots,b_d\}\ \varphi:\Z^d\rightarrow G$ $\begin{pmatrix}
+z_1 \\
+\vdots \\
+z_d \\
+\end{pmatrix}
+\rightarrow \sum_{i=1}^d z_i b_i$ je izomorfizmus grup.
+\end{proof}
+
+
+\begin{claim}
+$(\Z^{d_1}, +) \simeq (\Z^{d_2}, +) \Rightarrow d_1 = d_2$
+\end{claim}
+
+\begin{proof}
+$\varphi: \Z^{d_1} \rightarrow \Z^{d_2} $
+
+$\varphi/2\Z^{d_i}: 2\Z^{d_1} \rightarrow \Z^{d_2}$
+
+
+
+tyto dvě věci implikují: $\Z^{d_1}/2\Z^{d_2}\simeq \Z^{d_2}/2\Z^{d_2}\implies 2^{d_1}=2^{d_2}\implies d_1=d_2.$
+\end{proof}
+
+\begin{consequence}
+$\{b_1, \dots, b_d\}, \{b_1', \dots, b'_d\}$ volné báze komutativní volné grupy $G \Rightarrow d = d'$. ($G \simeq (\Z^d, +) \simeq (\Z^{d'}, +)$)
+\end{consequence}
+
+\begin{definition}[rank grupy]
+Rankem volné komutativní grupy $G$ rozumíme počet prvků nějaké její volné báze.
+\end{definition}
+
+\begin{claim}
+$\forall\varphi: (\Z^n, +) \rightarrow (\Z^m, +)$ hom. $\exists ! A\in M_{m,n}(\Z)$ tak, že $\varphi(u)=A\cdot u \forall u\in\Z^n$.
+\end{claim}
+
+\begin{proof}
+Pro $i = 1, \dots , n$: $\varphi(e_i) =: a_i \in \Z^m$. Dále $A:= (a_1|a_2|\dots|a_n)$. Potom $Au = A \begin{pmatrix}
+u_1 \\
+\vdots \\
+u_n
+\end{pmatrix}
+=\sum_{i=1}^n u_i a_i=\sum_{i=1}^n u_i \varphi(e_i)
+= \varphi(\sum_{i=1}^nu_ie_i) = \varphi(\begin{pmatrix}
+u_1 \\
+\vdots \\
+u_n
+\end{pmatrix}) = \varphi(n)$.
+
+Jednoznačnost: $\varphi(u)=A\cdot u\implies \varphi(e_i)=A e_i\implies \varphi(e_i)$ musí být $i$-tý sloupec matice $A$. 
+\end{proof}
+
+\subsection{Souřadnice}
+$G$ konečně generovaná volná komutativní grupa. $B = \{b_1, \dots, b_d\}$ volná báze $G$.
+
+Pro $g \in G$ je $[g]_B = \begin{pmatrix}
+z_1 \\
+\vdots \\
+z_d
+\end{pmatrix} \in \Z^d$, kde $g = \sum_{i = 1}^d z_ib_i$, souřadnice $g$ vzhledem k bázi $B$.
+
+\begin{definition}[Matice homomorfismu]
+Nechť $0 \neq G,H$ jsou konečně generované volné komutativní grupy, $B_G$ volná báze $G$, $B_H$ volná báze $H$.
+
+$\varphi: G \rightarrow H$ homomorfismus $[\varphi]_{B_H}^{B_G}$ je matice $|B_H| \times |B_G|$ nad $\Z$ 
+splňující $[\varphi]_{B_H}^{B_G}\cdot[g]_{B_G}=[\varphi(g)]_{B_H}$ pro každé $g\in G$
+\end{definition}
+
+Sestrojí se tak, že $[\varphi]_{B_H}^{B_G} = ([\varphi(b_1)]_{B_H}|[\varphi(b_2)]_{B_H}| \dots | [\varphi(b_d)]_{B_H})$, $B_G=\{b_1,\ldots,b_d\}$
+
+\begin{claim}
+$\varphi:G\rightarrow H,\psi:H\rightarrow K,\ G,H,K$ volné komutativní grupy,
+
+$B_G, B_H, B_K$ jejich volné báze
+
+$[\psi \circ \varphi]_{B_K}^{B_G} = [\psi]_{B_K}^{B_H} \cdot [\psi]_{B_H}^{B_G}$
+\end{claim}
+\begin{proof}
+Stejný důkaz jako v lineární algebře
+\end{proof}

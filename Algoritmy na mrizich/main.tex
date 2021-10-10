@@ -85,6 +85,28 @@
     \begin{center}\Large#1\end{center}
     \vskip0.5em}%
 }
+\newcommand*{\vect}[2]{
+\begin{pmatrix}
+#1 \\
+#2
+\end{pmatrix}}
+
+\newcommand*{\vectt}[3]{
+\begin{pmatrix}
+#1 \\
+#2 \\
+#3 
+\end{pmatrix}
+}
+\newcommand*{\vecttt}[4]{
+\begin{pmatrix}
+#1 \\
+#2 \\
+#3 \\
+#4 
+\end{pmatrix}
+}
+
 
 \newtheoremstyle{novy_radek}% name
 {10pt}% Space above
@@ -106,6 +128,7 @@
 \DeclareMathOperator{\F}{\mathcal{F}}
 \DeclareMathOperator*{\Arg}{Arg}
 \DeclareMathOperator*{\Log}{Log}
+\DeclareMathOperator*{\bigcupdot}{\overset{\bullet}{\bigcup}}
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\Rel}{Re}
 \DeclareMathOperator{\ind}{ind}
@@ -113,11 +136,17 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\LN}{LN}
+\DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\dimenze}{dim}
+\DeclareMathOperator{\modulo}{mod}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\SVP}{SVP}
+\DeclareMathOperator{\NP}{NP}
 
 \theoremstyle{plain}% default
 \newtheorem{theorem}{Věta}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Tvrzení}
 \newtheorem{consequence}[theorem]{Důsledek}
 \newtheorem{amendment}[theorem]{Dodatek}
 
