@@ -1,0 +1,113 @@
+%12/11/2021
+\subsection{Opakování}
+L úplná mříž v $\Real^n$. Pak $\exists x_1,x_2,\ldots,x_n\in L$ lineárně nezávislé, $\|x_i\|=\lambda_i(L)\ \forall 1\leq i\leq n$
+$x_i$ nenulový vektro L s nejmenší normou ... $\|x_1\|=\lambda_1(L)$\\
+$x_1,x_i$ máme, $x_{i+1}$ vektor z $L\setminus <x_1,\ldots,x_i>_{\Real}$ s nejmenší normou\\
+$\|x_i\|\geq\lambda_i(L)$. Pokud $\|x_i\|>\lambda_i(L),\ M=\{v\in L | \|v\|<\|x_i\| \}$ obsahuje $i$ LN vektorů. Proto $M\setminus <x_1,\ldots,x_{i-1}>_{\Real} \neq\emptyset$, $i$-tý vektor by měl mít normu $<\|x_i\|$\\
+\\
+Máme $x_1,\ldots,x_n\in L$ LN $\|x_i\|=\lambda_i(L),\ v\in L\setminus\{0\}$. Nechť $k\in \N$ je největší takové, že $\|v\|\geq\lambda_k(L)$. Pak $v\in <x_1,x_2,\ldots,x_k>_{\Real}$
+\begin{itemize}
+    \item Pokud $k=n\rightarrow x_1,\ldots,x_n$ je báze $\Real^n$
+    \item $k<n\rightarrow$ Nechť $v\notin<x_1,\ldots,x_k>_{\Real},\ M=\{u\in L | \|u\|\leq\|v\| \}$ obsahuje $x_1,x_2,\ldots,x_k,v\rightarrow\lambda_{kM}(L)\leq\|v\|\ldots$ spor s volbou $k$
+\end{itemize}
+
+
+\subsection{Gram-Schmidtova ortogonalizace}
+
+$b_1,b_2,\ldots,b_k$ LN vektory v $\Real^n$. G-S ortogonalizace nalezne $b_1^*,b_2^*,\ldots,b_k^*\in \Real^n$ splňující
+\begin{enumerate}
+    \item $b_i^*\cdot b_j^*=0\ \forall 1\leq i \neq j \leq k$
+    \item $b_i^*=b_i -x_i,\ x_i\in<b_1,\ldots,b_{i-1}>_{\Real}$ pro $i=1,\ldots,k\ (i=1\implies b_1=b_1^*)$
+\end{enumerate}
+
+\begin{note}
+$<b_1,\ldots,b_i>_{\Real}=<b_1^*,\ldots,b_i^*>_{\Real}\ \forall 1\leq i\leq k$, $b_i^*+x_i=b_i, x_i\in <b_1^*,\ldots,b_{i_1}^*>_{\Real}\ b_i^* \perp x_i,\ b_i^*$ je kolmá projekce $b_i$ do $<b_1,\ldots,b_{i-1}>^{\perp}$\\
+$\|b_i^*\|^2+\|x_i\|^2=\|b_i\|^2\implies\|b_i^*\|^2\leq \|b_i\|^2$
+\end{note}
+
+\begin{lemma}
+$L\subseteq (\Real^n,+)$ mříž s bází $b_1,b_2,\ldots,b_k$. Pak $\lambda_1(L)\geq \min \{\|b_1^*\|,\ldots,\|b_k^*\|\}$
+\end{lemma}
+\begin{proof}
+Chceme $\forall 0\neq v\in L$ $\|v\|\geq \{\|b_1^*\|,\ldots,\|b_k^*\|\}$.\\
+$v=\sum_{i=1}^k z_ib_i,\ z_1,\ldots,z_k\in\Z,\ l\in\{1,\ldots,k\},\ z_l\neq 0, z_{l+1}=\cdots=z_k=0$\\
+$v=z_lb_l^*+\sum_{i=1}^{l-1}r_ib_i^*$ pro $r_1,\ldots,r_{l-1}\in\Real$, TADY KOUSEK CHYBÍ!!!
+\end{proof}
+
+\begin{notation}
+$b_i^*=b_i-\sum_{j=1}^{i-1} u_{i,j}b_j^*,\ u_{i,j}=\frac{b_i\cdot b_j^*}{b_j^*\cdot b_j^*}$
+\end{notation}
+Chceme vyjádření $x_i=\sum_{j=1}^{i-1} r_jb_j,\ r_1,\ldots,r_{i-1}\in \Real,\ (b_i-x_i)\cdot b_t=O\ \forall t=1,2,\ldots,i-1$\\
+$\forall t=1,\ldots,i-1$ $0=(b_i-\sum_{j=1}^{i-1}r_j b_j)\cdot b_t \iff \sum_{j=1}^{i-1}(b_t\cdot b_j)r_j=b_i b_t$ $\forall t=1,\ldots,i-1 \iff (matice s prvkem\  b_t\cdot b_j)\cdot \vecttt{r_1}{r_2}{\vdots}{r_{i-1}}=\vecttt{b_i\cdot b_1}{b_i\cdot b_2}{\vdots}{b_i\cdot b_{i-1}}$ .
+Tato matice se nazývá \emph{Grammova matice} vektorů $b_1,\ldots,b_{i-1}$. Značíme ji
+$G_{b_1,\ldots,b_{i-1}}$
+.\\
+Koeficienty $r_1,\ldots,r_{i-1}$ získám řešením soustavy lineárních rovnic s maticí $G_{b_1,\ldots,b_{i-1}}$.
+
+\begin{claim}
+$b_1,b_2,\ldots,b_k\in\Real^n$ LN, $\det G_{b_1,\ldots,b_{i-1}}=\|b_1^*\|^2\|b_2^*\|^2\cdots\|b_k^*\|^2\leq\|b_1\|^2\|b_2\|^2\cdots\|b_k\|^2$ - Hadamardova nerovnost.
+\end{claim}
+
+\begin{proof}\phantom{}\\
+$A=(b_1|b_2|\cdots|b_k)\in M_{n,k}(\Real)$\\
+$B=(b_1^*|b_2^*|\cdots|b_k^*)\in M_{n,k}(\Real)$\\
+$A^T\cdot A=G_{b_1,\ldots,b_{i-1}}$ - na pozici $(t,j)$ je prvek $b_t\cdot b_j$\\
+$B^T\cdot B=G_{b_1^*,\ldots,b_{i-1}^*}=\diag(\|b_1^*\|^2\|b_2^*\|^2\cdots\|b_k^*\|^2)$\\
+$b_i^*+\sum_{j=1}^{i-1}\mu_{i,j}b_j^*=b_i$\\
+$A=B.$(matice která tady není!!!!! -  doplnit)\\
+$A=BU$\\
+$\det G_{b_1,\ldots,b_{i-1}}=\det A^T A=\det U^T(B^T B)U=\det (U^T)\cdot \det(B^T B)\cdot \det(U)=\|b_1^*\|^2\|b_2^*\|^2\cdots\|b_k^*\|^2$\\
+$\|b_1^*\|^2\|b_2^*\|^2\cdots\|b_k^*\|^2\leq\|b_1\|^2\|b_2\|^2\cdots\|b_k\|^2$ plyne z $\|b_i^*\|\leq\|b_i\|$
+\end{proof}
+
+\begin{reminder}
+$L=\Z b_1+\cdots\Z b_k \subseteq\Real^n$ $d(L)=\sqrt{\det A^T A}$, kde $A=(b_1|b_2|\cdots|b_k)$\\
+$d(L)=\sqrt{\det A^T A}=\|b_1^*\|^2\|b_2^*\|^2\cdots\|b_k^*\|^2\ldots$ lze chápat jako k-rozměrný objem množiny $F=\{\sum_{i=1}^{k}r_i b_i| r_i\in <0,1)\}$ v $\Real^n$\\
+\end{reminder}
+
+\subsection{Gaussova redukce úplné dvourozměrné mříže}
+\begin{definition}
+$L\subseteq (\Real^2,+)$ úplná mříž, $(b_1,b_2)$ báze $L$ se nazývá \emph{nejkratší báze L}, pokud 
+\begin{enumerate}
+    \item $b_1,b_2$ je báze $L$
+    \item $\forall v\in L\setminus\{0\}:\ \|v\|\geq \|b_1\|$
+    \item $\forall v\in L\setminus<b_1>_{\Real}:\ \|v\|\geq\|b_2\|$
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+$e_1=\vectttt{1}{0}{0}{0}{0}$, $e_2=\vectttt{0}{1}{0}{0}{0}$, $\ldots$, $e_5=\vectttt{0}{0}{0}{0}{1}$, $f=\vectttt{1/2}{1/2}{1/2}{1/2}{1/2}$\\
+$L=\Z e_1+\Z e_2+\cdots+\Z e_5+\Z f$\\
+báze $e_1,e_2,e_3,e_4,f$ $e_5=2f-e_1=e_2-e_3-e_4$\\
+$L$ nemá nejkratší bázi, tedy bázi $b_1,b_2,\ldots,b_5$\\
+$b_1\ldots$ nejkratší vektor $L\setminus\{0\}$, $b_2\ldots$ nejkratší vektor $L\setminus<b_1>_{\Real}$,\ldots $b_i\ldots$ nejkratší vektor $L\setminus<b_1,\ldots,b_{i-1}>_{\Real}$\\
+$v\in L\setminus\{0\}\twopart{v\in\Z^5}{\|v\|\geq 1}{v\in f+\Z^5}{\|v\|\geq\sqrt{5\cdot 1/4}>1}$
+
+
+TADY CHYBÍ SEZNAM, čemu nálěží které b i a že f nenáleží tomu, co generují
+
+
+\end{example}
+
+\begin{definition}[Algoritmus - Gaussova redukce mříže]\phantom{}\\
+VSTUP:$(b_1,b_2)$ báze $L\subseteq\Z^2$\\
+VÝSTUP: nejkratší báze $L$
+\begin{enumerate}
+    \item Repeat
+    \begin{itemize}
+        \item if $\|b_2\|\leq \|b_1\|$ then vyměň hodnoty proměnných $b_1$ a $b_2$\\
+    $x:=\lfloor\mu_{2,1}\rceil=\lfloor\frac{b_2\cdot b_1}{b_1\cdot b_1}\rceil$ (celočíselné zaokrouhlení $\mu_{2,1}$)\\
+    $b_2:=b_2-xb_1$
+    \end{itemize}
+     until $x=0$
+     \item return $(b_1,b_2)$
+\end{enumerate}
+\end{definition}
+
+TADY NECO CHYBÍ
+
+\begin{note}[Zaokrouhlení]
+Pokud $\mu_{2,1}\in 1/2 \pm \Z$, lze $\mu_{2,1}$ zaokrouhlit nahoru i dolů. Ale pokud $\mu_{2,1}=\pm 1/2$, zaokrouhlíme vždy na nulu!
+\end{note}
+
+

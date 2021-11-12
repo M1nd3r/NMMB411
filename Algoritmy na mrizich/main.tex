@@ -64,6 +64,14 @@
 			#3 & \mbox{pro } #4
 		\end{array}
 	\right.
+}\newcommand{\twopart}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{ } #2 \\
+			#3 & \mbox{ } #4
+		\end{array}
+	\right.
 }
 \newcommand{\threepartdef}[6]
 {
@@ -106,6 +114,24 @@
 #4 
 \end{pmatrix}
 }
+\newcommand*{\vectttt}[5]{
+\begin{pmatrix}
+#1 \\
+#2 \\
+#3 \\
+#4 \\
+#5 
+\end{pmatrix}
+}\newcommand*{\vecttttt}[6]{
+\begin{pmatrix}
+#1 \\
+#2 \\
+#3 \\
+#4 \\
+#5 \\
+#6 
+\end{pmatrix}
+}
 
 
 \newtheoremstyle{novy_radek}% name
@@ -142,6 +168,9 @@
 \DeclareMathOperator{\poly}{poly}
 \DeclareMathOperator{\SVP}{SVP}
 \DeclareMathOperator{\NP}{NP}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\diag}{diag}
 
 \theoremstyle{plain}% default
 \newtheorem{theorem}{Věta}[section]
@@ -171,7 +200,7 @@
 
 \title{\textbf{\Huge Algoritmy na mřížích}}
 \subtitle{Pavel Příhoda}
-\date{3. listopadu 2021}
+\date{24. října 2021}
 \author{\vspace{-10mm}}
 %\date{} % Toggle commenting to test
 
