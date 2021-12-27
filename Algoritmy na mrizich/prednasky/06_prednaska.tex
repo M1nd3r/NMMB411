@@ -1,1 +1,63 @@
 %05/11/2021
+\subsection*{Opakování}
+Nechť $L \subseteq \Real^n$ je úplná mříž, $S \subseteq \Real^n$ je měřitelná, $\text{vol}(S) > d(L)$.\\
+Pak $\exists s_1, s_2 \in S, s_1 \neq s_2: \ s_1 - s_2 \in L$.
+\newpage
+\begin{theorem}[Minkowského věta o mřížovém bodě]\label{o_mrizovem_bode}
+Nechť $L \subseteq \Real^n$ je úplná mříž. Nechť $S \in \Real^n$ je
+\begin{itemize}
+    \item měřitelná a $\vol(S) > 2^nd(L)$,
+    \item středově souměrná (t.j. $\forall S \in S: \ -s \in S$),
+    \item konvexní (t.j. $\forall s_1, s_2 \in S \ \forall \lambda \in [0,1]: \ \lambda s_1 + (1-\lambda)s_2 \in S$).
+\end{itemize}
+Pak $S$ obsahuje nenulový prvek $L$.
+\end{theorem}
+\begin{proof}
+Položme $\Tilde{S} := \{\frac{1}{2}s \ | \ s \in S\}$. Pak $\Tilde{S}$ je měřitelná a $\vol(\Tilde{S}) = \frac{1}{2^n}\vol(S)>d(L)$. Z Blichfeldtovy věty \ref{blichfeldt} pak plyne, že $\exists \Tilde{s_1}, \Tilde{s_2} \in \Tilde{S}, \ \Tilde{s_1} \neq \Tilde{s_2}: \ \Tilde{s_1} - \Tilde{s_2} \in L$. Označme $s_1 := 2\Tilde{s_1}, \ s_2 := 2\Tilde{s_2}$, pak $s_1, s_2 \in S$ a platí $$L \ni \Tilde{s_1} - \Tilde{s_2} = \frac{1}{2}s_1 + \frac{1}{2}(-s_2) \in S,$$neboť dle předpokladu je $S$ konvexní, a tudíž je $\Tilde{s_1} - \Tilde{s_2}$ hledaným nenulovým prvkem $L$.
+\end{proof}
+
+\begin{theorem}[Minkowski]\label{minkowski_small}
+Nechť $L \subseteq \Real^n$ je úplná mříž. Pak $\lambda_1(L) \leq \sqrt{n}\sqrt[n]{d(L)}$.
+\end{theorem}
+\begin{proof}
+Aplikujeme větu o mřížovém bodě \ref{o_mrizovem_bode} na $S = \{ v \in \Real^n \ | \ \|v\| \leq \sqrt{n}\sqrt[n]{d(L)}\}$. Ověříme předpoklady věty:
+\begin{itemize}
+    \item $S$ je uzavřená $\implies$ měřitelná,
+    \item $S$ je středově souměrná a konvexní, protože je to koule.
+\end{itemize}
+Položme $K := \{\left(x_1 \ \ldots \ x_n\right)^T \ | \ |x_i| < \sqrt[n]{d(L)} \ \forall i\}$. Je-li $v \in K$, pak $$\|v\| \leq \sqrt{n \cdot (\sqrt[n]{d(L)})^2} = \sqrt{n}\sqrt[n]{d(L)} \implies K \subseteq S.$$
+Platí $\vol(K) = 2^n(\sqrt[n]{d(L)})^n = 2^nd(L)$, z čeho pak plyne $\vol(K) = 2^nd(L) \leq \vol(S)$. Ve skutečnosti dokonce platí $\vol(K) < \vol(S)$ (pozn.: nebylo vysvětleno proč) a tedy $2^nd(L) < \vol(S)$ a můžeme použít větu o mřížovém bodě, z které plyne tvrzení.
+\end{proof}
+
+\underline{Připomenutí:} Pro $L \subseteq \Real^n$ úplná, $i \in \{1,\dots,n\}$ definujeme\\ $\lambda_i(L) := \min\{r \in \Real^+ | \ L \cap \{v \ | \ \|v\| \leq r\} \text{ obsahuje }i\text{ LN vektorů}\}$.
+
+\begin{theorem}[Minkowski]\label{theorem_minkowski}
+Nechť $L \subseteq \Real^n$ je úplná mříž. Pak $(\lambda_1(L)\cdot\ldots\cdot\lambda_n(L))^{\frac{1}{n}} \leq \sqrt{n}\sqrt[n]{d(L)}$.
+\end{theorem}
+
+\begin{lemma}\label{lemma_pred_minkowski}
+Nechť $L \subseteq \Real^n$ je úplná mříž. Pak $\exists x_1, \dots x_n \in L: \ \|x_i\| = \lambda_i(L) \ \forall i \in \{1,\dots,n\}$.
+\end{lemma}
+\begin{proof}
+Zvolíme $x_1$ nenulový vektor $L$ s nejmenší normou, pak $\|x_1\|=\lambda_1(L)$. Když už máme vektory $x_1,\dots,x_i$, za $x_{i+1}$ vezmeme vektor z $L\setminus <\!x_1,\ldots,x_i\!>_{\Real}$ s nejmenší normou. 
+
+Zjevně $\|x_i\|\geq\lambda_i(L)$. Pokud $\|x_i\|>\lambda_i(L)$, pak $M=\{v\in L \ | \ \|v\|<\|x_i\| \}$ obsahuje $i$ LN vektorů. Proto $M\setminus <\!x_1,\ldots,x_{i-1}\!>_{\Real} \neq\emptyset$ a $i$-tý vektor by musel mít normu $<\|x_i\|$, spor.
+\end{proof}
+
+\begin{proof}(Věta \ref{theorem_minkowski})
+Z předchozího lemmatu \ref{lemma_pred_minkowski} plyne, že $\exists x_1,\dots,x_n \in L$ LN (báze $\Real^n$) splňující $\|x_i\| = \lambda_i(L) \ \forall i \in \{1,\dots,n\}$. Gram-Schmidtovou ortogonalizací získáme z této báze ortogonální bázi $\{x_1^*,\dots,x_n^*\}$ prostoru $\Real^n$ (konkrétně: položíme $x_1^* := x_1$, a následně\\$x_j^* := x_j - \sum_{i=1}^{j-1} \mu_{j,i} x_i^*, \ \mu_{j,i} := \frac{x_j^Tx_i^*}{x_i^{*T}x_i^*}$). Dále položíme $T := \{v \in \Real^n \ | \ \sum_{i=1}^n(\frac{v^Tx_i^*}{\lambda_i(L)\|x_i^*\|})^2 < 1\}$ a\\$b_i := \frac{x_i^*}{\|x_i^*\|}$, pak $\{b_1,\dots,b_n\}$ je ON báze $\Real^n$.
+
+Zvolme $v \in \Real^n$, pak $v = \sum_{i=1}^n r_i b_i$ pro nějaká $r_i \in \Real$. Pak $$v \in T \iff \sum_{i=1}^n\bigg(\frac{(\sum_{j=1}^n r_j b_j)^Tb_i}{\lambda_i(L)}\bigg)^2 = \sum_{i=1}^n \frac{r_i^2}{\lambda_i(L)^2}  < 1.$$
+Vidíme, že $T$ je středově souměrná a že je měřitelná a konvexní, jelikož z předchozího vztahu plyne, že $T$ je elipsoid v $\Real^n$. Plán: ukážeme, že $T \cap L = \{0\}$, pak Minkowského věty o mřížovém bodě \ref{o_mrizovem_bode} musí platit $\vol(T) \leq 2^nd(L)$.
+
+Pro $v \in L \setminus \{0\}$ existuje $k \in \{1,\dots,n\}: \ \|v\| \geq \lambda_k(L)$. Zvolme největší vyhovující $k$, pak máme $x_1,\dots,x_k$ LN splňující $\|x_i\| = \lambda_i(L)$, a platí, že $v \in <\!x_1,\ldots,x_k\!>_{\Real} = <\!x_1^*,\ldots,x_k^*\!>_{\Real}$, neboť:
+\begin{itemize}
+    \item Pokud $k=n$, pak $x_1,\ldots,x_n$ je báze $\Real^n$, a
+    \item jestli pro $k<n$ platí $v\notin<\!x_1,\ldots,x_k\!>_{\Real}$, položíme $M:=\{u\in L \ | \ \|u\|\leq\|v\| \}$. Pak $M$ obsahuje vektory $x_1,x_2,\ldots,x_k,v$ a tudíž $\lambda_{k+1}(L)\leq\|v\|$ - spor s volbou $k$.
+\end{itemize}
+Pro toto $k$ pak platí: $$\sum_{i=1}^n\bigg(\frac{v^Tx_i^*}{\lambda_i(L)\|x_i^*\|}\bigg)^2 \geq \sum_{i=1}^k\bigg(\frac{v^Tx_i^*}{\lambda_i(L)\|x_i^*\|}\bigg)^2 \geq \frac{1}{\lambda_k(L)^2}\sum_{i=1}^k\bigg(\frac{v^Tx_i^*}{\|x_i^*\|}\bigg)^2 = \frac{1}{\lambda_k(L)^2}\|v\|^2 \geq 1,$$
+t.j. $v \notin T$, a tedy $\vol(T) \leq 2^nd(L)$.
+
+Uvažme dále zobrazení $\phi: \Real^n \rightarrow \Real^n$ definováno předpisem $(r_1 \ \ldots \ r_n)^T \mapsto \sum_{i=1}^n \lambda_i(L) r_i b_i$. Platí $\phi((r_1 \ \ldots \ r_n)^T) \in T \iff \sum_{i=1}^n r_i^2 <1$, a teda $\phi^{-1}(T) = \{v \in \Real^n \ | \ \|v\| < 1\}$. Vezmeme jednotkovou krychli $K = [0,1] \times \ldots \times [0,1]$, pak $\phi(K) = [0,\lambda_1(L)]b_1 \times \ldots \times [0,\lambda_n(L)]b_n$ a platí $\vol(K) = 1$ a $\vol(\phi(K)) = \lambda_1(L)\cdot\ldots\cdot\lambda_n(L)$. Navíc pro $S$ měřitelnou je $\vol(\phi(S)) = \lambda_1(L)\cdot\ldots\cdot\lambda_n(L)\cdot\vol(S)$, a tudíž $$\vol(T) = \vol(B)\cdot\prod_{i=1}^n\lambda_i(L)\text{, kde }B = \{v \in \Real^n \ | \ \|v\| < 1\}.$$Nakonec $$\bigg\{(x_1 \ \ldots \ x_n)^T \ | \ |x_i| < \frac{1}{\sqrt{n}} \ \forall i\bigg\} \subseteq B$$
+a tedy $\vol(B) \geq \big(\frac{2}{\sqrt{n}}\big)^n$. Spojením předchozích tak dostávame $$2^nd(L) \geq \vol(T) = \vol(B)\cdot\prod_{i=1}^n\lambda_i(L) \geq \bigg(\frac{2}{\sqrt{n}}\bigg)^n\cdot\prod_{i=1}^n\lambda_i(L) \implies \sqrt[n]{\prod_{i=1}^n \lambda_i(L)} \leq \sqrt{n}\sqrt[n]{d(L)}.$$
+\end{proof}

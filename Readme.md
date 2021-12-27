@@ -1,4 +1,4 @@
-# NMMB441 - Algoritmy na mřížích
+# NMMB411 - Algoritmy na mřížích
 
 Struktura repozitáře:
 

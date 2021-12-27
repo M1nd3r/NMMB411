@@ -1,6 +1,6 @@
 %22/10/2021
-\subsection*{opakování}
-Minule: AB $\in M_{m,n}(\Z)$ AU=B U in GL, sloupce matic A,B generují stejnou podgrupu $(\Z^m,+)$
+\subsection*{Opakování}
+Minule: $A,B \in M_{m,n}(\Z), \ B = AU, \ U \in GL(n,\Z) \implies$ sloupce matic $A,B$ generují stejnou podgrupu $(\Z^m,+)$
 
 \begin{note}
 Každá podgrupa konečně generované komutativní grupy je konečně generovaná.
@@ -12,25 +12,28 @@ $A =
 1 & 1 & 2 & 3\\
 1 & 2 & 1 & 1
 \end{pmatrix}$.
-Určete volnou bázi grupy $G=\{u\in\Z^4|A\cdot u\equiv0(\modulo 5)\}$:    
+Určete volnou bázi grupy $G=\{u\in\Z^4| \ Au\equiv0 \ (\modulo 5)\}$.
 
-Vyřeším soustavu $A\cdot u=0$ nad $\Z_5$
+\underline{Řešení:} Vyřeším soustavu $Au=0$ nad $\Z_5$:
 
 $\begin{pmatrix}
 1 & 1 & 2 & 3\\
+1 & 2 & 1 & 1
+\end{pmatrix}
+\sim
+\begin{pmatrix}
+1 & 1 & 2 & 3\\
 0 & 1 & -1 & -2
-\end{pmatrix}$, 
-$u_1=\vecttt{0}{2}{0}{1}$, $u_2=\vecttt{2}{1}{1}{0}\\
-\forall u\in G, (u \modulo 5) \in \Z u_1 + \Z u_2\\
-\vecttt{5}{0}{0}{0},\vecttt{0}{5}{0}{0},\vecttt{0}{0}{5}{0},\vecttt{0}{0}{0}{5}$, $u_1$, $u_2$ generují G.
+\end{pmatrix}$. Vektory 
+$u_1=\vecttt{0}{2}{0}{1}$, $u_2=\vecttt{2}{1}{1}{0}$ tvoří bázi řešení soustavy, tudíž $\forall u\in G: \ u \modulo 5 \in \Z u_1 + \Z u_2$, a tedy
+$\vecttt{5}{0}{0}{0},\vecttt{0}{5}{0}{0},\vecttt{0}{0}{5}{0},\vecttt{0}{0}{0}{5}$, $u_1$, $u_2$ generují G.
 
-$\exists z_1, z_2: z_1u_+ + z_2 u_2\equiv u \mod 5\\
-z_1 u_1 + z_2 u_2-u=\vecttt{5a_1}{5a_2}{5a_3}{5a_4}\implies u=z_1u_1+z_2u_2+a_1\cdot \vecttt{5}{0}{0}{0} + a_2\cdot \vecttt{0}{5}{0}{0} + a_3\cdot \vecttt{0}{0}{5}{0}+ a_4\cdot \vecttt{0}{0}{0}{5}
-$
+(Detailněji: $\exists z_1, z_2: \ z_1u_1 + z_2u_2\equiv u \ (\modulo 5)$, ekvivalentně
+$z_1 u_1 + z_2 u_2-u=\vecttt{5a_1}{5a_2}{5a_3}{5a_4}$\\$\implies u=z_1u_1+z_2u_2+a_1 \vecttt{5}{0}{0}{0} + a_2 \vecttt{0}{5}{0}{0} + a_3 \vecttt{0}{0}{5}{0}+ a_4\vecttt{0}{0}{0}{5}
+$)
 
-
-$
-HNF\\
+Označíme $B$ matici tvořenou nalezenými generujícími vektory volné grupy $G$, a ekvivalentními úpravami ji převedeme do HNF:
+$B =
 \begin{pmatrix}
 5 & 0 & 0 & 0 & 2 & 0\\
 0 & 5 & 0 & 0 & 1 & 2\\
@@ -44,19 +47,25 @@ HNF\\
 0 & 0 & 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 0 & 0 & 1
 \end{pmatrix}
-$
+$.
 
-Označíme nenulové sloupce $z_1=\vecttt{5}{0}{0}{0}$, $z_2=\vecttt{0}{5}{0}{0}$, $z_3=\vecttt{2}{1}{1}{0}$, $z_4=\vecttt{0}{2}{0}{1}$. Poté $\{z_1,z_2,z_3,z_4\}$ tvoří volnou bázi $G$.
+Nenulové sloupcové vektory $z_1=\vecttt{5}{0}{0}{0}$, $z_2=\vecttt{0}{5}{0}{0}$, $z_3=\vecttt{2}{1}{1}{0}$, $z_4=\vecttt{0}{2}{0}{1}$ normalizované matice pak tvoří volnou bázi $G$.
 \end{example}
 
 \subsection{Soustavy lineárních diofantických rovnic}
-$A\in M_{m,n}(\Z)$, hledáme $R=\{u\in \Z|A\cdot u=0\}$... podgrupa $\Z^n$. Hledáme volnou bázi $R$.
-$\exists U\in GL(n,\Z)$, $AU$ je v HNF, 
-$A\cdot(u_1|u_2|\ldots|u_n)=(\text{obrazek s nulami - viz Martin Pastyrik})$.
-$u_1,u_2,\ldots,u_r\in R$, $u_1,u_2,\ldots,u_r \LN$ (nad $\Q$), U je regulární, $u\in R$, $Au=0\implies (AU)(U^{-1}u)=0\implies U^{-1}u\in \vecttttt{*}{\vdots}{*}{0}{\vdots}{0}$ (r hvězdiček, pak nuly) $\implies \exists\vecttttt{z_1}{\vdots}{z_r}{0}{\vdots}{0}\in\Z^n$, $u=U\vecttttt{z_1}{\vdots}{z_r}{0}{\vdots}{0}=z_1u_1+z_2u_2+\cdots +z_ru_r$
+Dána $A\in M_{m,n}(\Z)$ určující $R=\{u\in \Z| \ Au=0\}$ podgrupu $\Z^n$. Hledáme volnou bázi $R$.
+
+Víme, že $\exists U\in GL(n,\Z)$, $AU$ je v HNF, přičemž 
+$A(u_1|u_2|\ldots|u_n)$ má prvních $r$ sloupců nulových, tedy $u_1,u_2,\ldots,u_r\in R$. 
+
+Protože $U$ je regulární, $u_1,u_2,\ldots,u_r$ jsou LN (nad $\Q$), a pro $u\in R$ platí\\
+$Au=0 \implies (AU)(U^{-1}u)=0\implies U^{-1}u\in \vecttttt{*}{\vdots}{*}{0}{\vdots}{0}$ (r nenulových prvků, pak nuly)\\ $\implies \exists\vecttttt{z_1}{\vdots}{z_r}{0}{\vdots}{0}\in\Z^n$, $u=U\vecttttt{z_1}{\vdots}{z_r}{0}{\vdots}{0}=z_1u_1+z_2u_2+\cdots +z_ru_r$, tedy $\{u_1,\dots u_r\}$ generují $R$.
 
 \begin{example}
-Určete celočíselné řešení rovnice $2x+3y+5z=0$\\
+Určete celočíselné řešení rovnice $2x+3y+5z=0$.
+
+\underline{Řešení:}
+$AU$ je v HNF, $EU=U$. Eliminujeme:
 $$\begin{pmatrix}
 2 & 3 & 5\\
 \hline 
@@ -98,46 +107,64 @@ $$\begin{pmatrix}
 -1 & 3 & -1\\
 -1 & -2 & 1\\
 1 & 0 & 0
+\end{pmatrix},
+$$ tudíž
+$U := 
+\begin{pmatrix}
+-1 & 3 & -1\\
+-1 & -2 & 1\\
+1 & 0 & 0
 \end{pmatrix}
-=:U$$
+$
+a 
+$
+R = \{
+\begin{pmatrix}
+-z_1+3z_2\\
+-z_1-2z_2\\
+z_1
+\end{pmatrix} | \ z_1, z_2 \in \Z\}.
+$
 \end{example}
 
-\subsection{Jednozančnost HNF}
-$A\in M_{m,n}(\Z)$, $U, U'\in\GL(n,\Z)$, $AU=B, AU'=B'$ obě v HNF. Pak $B=B'$.
-$G$... podgrupa $\Z^m$ generovaná sloupci $A$. Sloupce $B$, sloupce $B'$ rovněž generují $G$.\\
-\newline
-definice B a B'pomocí obrázků,. viz Martin P.\\
-\newline
-$r=n-\text{rank } G$, $r'=n-\text{rank } G\implies r=r'$\\
-$L_1=\Bigg\{\vecttt{z_1}{0}{\vdots}{0}\Bigg|z_1\in\Z\Bigg\}$, $L_2=\Bigg\{\vectttt{z_1}{z_2}{0}{\vdots}{0}\Bigg|z_1,z_2\in\Z\Bigg\}$ atp., tj. $L_i$ má na prvních $i$ souřadnicích $z_1$ až $z_i$, dále samé nuly.\\
-$G_i=G\cap L_i$, $f(r+i)=\min\{j\in\{1,\ldots,m\}\ |\ \text{rank } G_j=i\}=f'(r+i)$\\
-$b_{f(r+i),r+i}=b'_{f(r+i),i}$ (z definice jsou oba kladné)\\
-$b_{f(n),n}:$ podívám se na poslední nenulový řádek matice A... vidím, že $b_{f(n),n}$ je NSD
-prvků v posledním řádku A.
+\subsection{Jednoznačnost HNF}
+\begin{claim}
+Nechť $A\in M_{m,n}(\Z)$, $U, U'\in\GL(n,\Z)$. Nechť matice $AU=B, \ AU'=B'$ jsou obě v HNF. Pak $B=B'$.
+\end{claim}
 
-Vidíme, že $b_{f(n),n}|b'_{f(n),n}$ a zároveň $b'_{f(n),n}|b_{f(n),n}$.
+\begin{proof}
+Nechť $G$ je podgrupa $\Z^m$ generovaná sloupci $A$. Sloupce $B$, sloupce $B'$ rovněž generují $G$, protože $U, U'\in\GL(n,\Z)$.
 
-$B=B'\cdot W$, $W=U^{-1}\cdot U$\\
-např. $b'_i$ je (r+i)-tý sloupec B', $b'_i\in G$\\
-$b'_i\ldots$ celočíselná lineární kombinace sloupců B (ale kterých??)\\
+Protože $B,B'$ jsou obě v HNF, existují $r,r' \in \N$ taková, že matice $B$ má prvních $r$ sloupců nulových a matice $B'$ má prvních $r'$ sloupců nulových. Protože $r=n-\text{rank } G$, $r'=n-\text{rank } G$, máme $r=r'$.
+
+Dále položme $L_1:=\Bigg\{\vecttt{z_1}{0}{\vdots}{0}\Bigg|z_1\in\Z\Bigg\}$, $L_2:=\Bigg\{\vectttt{z_1}{z_2}{0}{\vdots}{0}\Bigg|z_1,z_2\in\Z\Bigg\}$ atd., t.j. $L_i$ obsahuje všechny vektory, které mají na prvních $i$ souřadnicích celé čísla $z_1$ až $z_i$ a na zvyšných souřadnicích samé nuly, a dále označme
+$G_i:=G\cap L_i \ \forall i \in \{1,\dots m \}$. Nechť $f(r+i)$ je index posledního nenulového prvku v $(r+i)$-tém sloupci matice $B$ (tedy $b_{w,r+i} = 0 \ \forall w \in \{f(r+i)+1,m\}$), a analogicky zadefinujeme $f'(r'+i)$ pro matici $B'$. Pak tedy platí\\ $f(r+i)=\min\{j\in\{1,\ldots,m\}\ |\ \text{rank } G_j=i\}=f'(r+i) \ \forall i \in \{1,\dots\text{rank }G\}$, odkud plyne\\ $b_{f(r+i),r+i}=b'_{f(r+i),r+i}$, protože z definice jsou oba kladné.
+
+Podívám se na poslední nenulový řádek matice A a vidíme, že $b_{f(n),n}$ je NSD prvků v posledním nenulovém řádku A. Zároveň vidíme, že $b_{f(n),n}|b'_{f(n),n}$ a zároveň $b'_{f(n),n}|b_{f(n),n}$.
+
+Položme $W:=U^{-1}U$, pak platí $B=B'W$, z čeho např. vidíme, že $b'_i$ ($(r+i)$-tý sloupec $B'$) je prvkem $G$ a $b'_i$ je celočíselná lineární kombinace sloupců $B$. Ale kterých?
+
 $b'_i=b_i+$ LK sloupců vlevo od $b_i$\\
 $\phantom{b'_i=.}\vdots$\\
-$\phantom{b'_i=}b_{f(r+i),r+i}= b'_{f(r+i),r+i}$ \\
+$\phantom{b'_i=}b_{f(r+i),r+i}= b'_{f(r+i),r+i}$ (na pivotech jsou stejné prvky)
 
-$r<j<k\leq n$, $b_{f(j),k}\in\{0,\ldots,b_{f(j),k}-1\}$ vynutí, že LK sloupců vlevo od $b_i$ je triviální.
+Pro $r<j<k\leq n$ je $b_{f(j),k}\in\{0,\ldots,b_{f(j),j}-1\}$. To vynutí, že LK sloupců vlevo od $b_i$ je triviální.
+\end{proof}
+
 \subsection{Smithova normální forma}
 \begin{definition}[Smithův normální tvar]
-$A\in M_{n}(\Z)$ je ve \emph{Smithově normálním tvaru} (SNF), pokud je diagonální $A=diag(a_1,a_2,\ldots,a_n), a_1,\ldots,a_n\in \N_0$, $\forall i\in\{1,\ldots,n-1\} a_{i+1}|a_i$
+$A\in M_{n}(\Z)$ je ve \emph{Smithově normálním tvaru} (SNF), pokud je diagonální $A=\text{diag}(a_1,a_2,\ldots,a_n), \ a_1,\ldots,a_n\in \N_0$ a $\forall i\in\{1,\ldots,n-1\}: \ a_{i+1}|a_i$.
 \end{definition}
 
-\begin{theorem}
-Pro všechny matice $A\in M_n(\Z)\ \exists U,V\in \GL(n,\Z)$ takové, že $UAV$ je ve Smithové normálním tvaru.
+\begin{theorem}\label{theorem3_27}
+$\forall A\in M_n(\Z)\ \exists U,V\in \GL(n,\Z)$ takové, že $UAV$ je ve Smithově normálním tvaru.
 \end{theorem}
+
 \begin{definition}
 Součin \emph{UAV} je určený jednoznačně a nazývá se Smithova normální forma \emph{A}.
 \end{definition}
 
-K důkazu existence: Na řádky/sloupce aplikujeme tyto úpravy
+\underline{K důkazu existence:} Na řádky/sloupce aplikujeme tyto úpravy
 \begin{itemize}
     \item permutace řádků, permutace sloupců
     \item řádek/sloupec přenásobíme (-1)
@@ -145,16 +172,16 @@ K důkazu existence: Na řádky/sloupce aplikujeme tyto úpravy
     \item k řádku přičíst celočíselnou LK ostatních řádků
 \end{itemize}
 ...snažíme se $A$ převést do SNF
+
 \begin{theorem}
-Nechť G je konečně generovaná volná komutativní grupa, H podgrupa G. Pak $\{b_1,\ldots,b_d\}$ volné báze G, $z_1,z_2,\ldots,z_d\in \Z$ tak, že $\{z_1b_1,z_2b_2,\ldots,z_d b_d\}\setminus\{0\}$ je volná báze H.
+Nechť G je konečně generovaná volná komutativní grupa, H podgrupa G. Nechť $\{b_1,\ldots,b_d\}$ je volná báze G. Pak $\exists z_1,z_2,\ldots,z_d\in \Z$ tak, že $\{z_1b_1,z_2b_2,\ldots,z_d b_d\}\setminus\{0\}$ je volná báze H.
 \end{theorem}
 
-Idea důkazu:\\
-$G\simeq(\Z^d,+)$, BÚNO $G=\Z^d$, H je konečně generovaná volná komutativní grupa ranku $\leq d$, $\{h_1,h_2,\ldots,h_l\}$ volná báze $H$.
-$$A=(h_1|h_2|\ldots|h_l|0|\ldots|0)\ \exists U,V \in \GL(d,\Z)\ UAV=\text{diag}(z_1,\ldots,z_d)$$
-$H$... podgrupa $\Z^d$ generovaná sloupci $A$ = podgrupa generovaná sloupci $AV$\\
-$\phi_U:\Z^d\rightarrow\Z^d$, $\phi_U(v):=U\cdot v$... automorfismus
-$\phi_U (H)$ je volná kom. grupa s volnou bází $\{z_1e_1,z_2e_2,\ldots,z_de_d\}\setminus\{0\}$, kde $e_i$ je $i$-tý vektor kanonické báze.\\
-$b_i:=\phi_U^{-1}(e_i)=U^{-1}\cdot e_i$\\
-$\{b_1,\ldots,b_d\}$ volná báze $(\Z^d,+)$\\
-$\{z_1b_1, \ldots,z_d b_d\}\setminus\{0\}$ je volná báze $\varphi_U^{-1}(\varphi_U(H))=H$
+\begin{proof}
+Víme, že $G\simeq(\Z^d,+)$, BÚNO $G=\Z^d$ a H je konečně generovaná volná komutativní grupa ranku $l \leq d$. Nechť $\{h_1,h_2,\ldots,h_l\}$ je volná báze $H$. Položme $A:=(h_1|h_2|\ldots|h_l|0|\ldots|0)$, pak dle Věty \ref{theorem3_27} $\exists U,V \in \GL(d,\Z): \ UAV=\text{diag}(z_1,\ldots,z_d)$.
+
+Pozorování: $H$ je podgrupa $\Z^d$ generovaná sloupci $A$, a taky je generovaná sloupci $AV$ (protože $U \in \GL(n,\Z)$).
+
+Definujme zobrazení $\phi_U:\Z^d\rightarrow\Z^d$ předpisem $\phi_U(v):=Uv$. Toto zobrazení je automorfismus (neboť $U \in \GL(n,\Z)$) a $\phi_U (H)$ je volná komutativní grupa s volnou bází $\{z_1e_1,z_2e_2,\ldots,z_de_d\}\setminus\{0\}$, kde $e_i$ je $i$-tý vektor kanonické báze. Označme $b_i:=\phi_U^{-1}(e_i)=U^{-1}e_i$, pak
+$\{b_1,\ldots,b_d\}$ je volná báze $(\Z^d,+)$, a $\{z_1b_1, \ldots,z_d b_d\}\setminus\{0\}$ je volná báze $\varphi_U^{-1}(\varphi_U(H))=H$.
+\end{proof}
