@@ -1,46 +1,52 @@
 %15/10/2021
-\section*{opakování}
+\subsection*{Opakování}
 \begin{itemize}
     \item Každá konečně generovaná volná komutativní grupa G je isomorfní $(\Z^n, +)$, kde $n \in \N_0$ je \emph{rank grupy G}.
-    \item $\varphi: \Z^n \rightarrow \Z^m$ maticová násobení: $\exists ! A \in M_{m,n}(\Z): \varphi(u) = Au \forall u \in \Z$. Potom tedy $A$ je matice $\varphi$ vzhledem ke kanonickým bazím.
+    \item Homomorfismus $\varphi: \Z^n \rightarrow \Z^m$ koresponduje s maticovým násobením: $\exists ! A \in M_{m,n}(\Z): \ \varphi(u) = Au \ \forall u \in \Z$. Potom tedy $A$ je matice $\varphi$ vzhledem ke kanonickým bazím.
     \item $M_n(\Z)$ značí množinu všech čtvercových matic $n \times n$ nad $\Z$. $E$ značí jednotkovou matici.
-    \item $\adj(A)$ značí adjungovanou matici (TODO: přidat odkaz :D)
+    \item $\adj(A)$ značí adjungovanou matici (\url{https://cs.wikipedia.org/wiki/Adjungovan%C3%A1_matice})
     \item $K$ značí kanonickou bázi.
 \end{itemize}
 
 \subsection{Unimodulární matice}
 \begin{definition}
-    $A \in M_n(\Z)$ je \emph{unimodulární}, pokud $\det(A) = \pm 1$. $GL(n, \Z)$ je \emph{množina všech unimodulárních matic} stupně $n$.
+    $A \in M_n(\Z)$ je \emph{unimodulární}, pokud $\det(A) = \pm 1$. $GL(n, \Z)$ je \emph{množina všech unimodulárních matic} řádu $n$.
 \end{definition}
 
-\begin{lemma}
-    $A \in M_n(\Z)$ je unimodulární $\Leftrightarrow$ $A$ je regulární a $A^{-1} \in M_n(\Z)$.
+\begin{lemma}\label{lemma3_11}
+    $A \in M_n(\Z)$ je unimodulární $\iff $ $A$ je regulární a $A^{-1} \in M_n(\Z)$.
 \end{lemma}
 \begin{proof}
-    $\Rightarrow:$\\
-    Mějme regulární $A \in M_n(\Z)$. Potom $A\cdot A^{-1} = E \Rightarrow \det(A) \cdot \det(A^{-1}) = 1$. Ale jelikož $A, A^{-1} \in M_n(\Z)$, tak $\det(A), \det(A^{-1})\in \Z$ a tedy $\det(A) = \pm 1 = \det(A^{-1})$.
+\phantom{}
+    \begin{itemize}[label={}]
+    \item $\Leftarrow:$
+    Mějme regulární $A \in M_n(\Z)$ takovou, že $A^{-1} \in M_n(\Z)$. Potom $A\cdot A^{-1} = E \implies \\ \det(A) \cdot \det(A^{-1}) = 1$. Ale jelikož $A, A^{-1} \in M_n(\Z)$, tak $\det(A), \ \det(A^{-1})\in \Z$ a tedy $\det(A) = \pm 1 = \det(A^{-1})$.
 
-    $\Leftarrow:$\\
-    $A^{-1} = \frac{1}{\det(A)} \cdot \adj(A)$. $\det(A)$ je $\pm 1$ z definici unimodulární matice. $\adj(A) \in M_n(\Z)$, protože všechny subdeterminanty (?) $A$ jsou celočíselné. Nakonec $A$ je regulární, protože je unimodulární.
+    \item $\Rightarrow:$
+    Z definice unimodulární matice je $\det(A) =\pm 1$, což implikuje regularitu $A$ a existenci $A^{-1}$. Pak platí $A^{-1} = \frac{1}{\det(A)} \cdot \adj(A)$. Navíc $\adj(A) \in M_n(\Z)$, protože všechny subdeterminanty $A$ jsou celočíselné, a proto $A^{-1} \in M_n(\Z)$.
+    \end{itemize}
 \end{proof}
 
 
 
 \begin{claim}
-    Homomorfismus $\varphi: \Z^n \leftarrow \Z^n$ je isomorfismus $\Leftrightarrow$ $A = [\varphi]^K_K$ je unimodulární.
+    Homomorfismus $\varphi: \Z^n \rightarrow \Z^n$ je isomorfismus $\iff A = [\varphi]^K_K$ je unimodulární.
 \end{claim}
 \begin{proof}
-    $\Leftarrow:$\\
-    Mějme $\psi = \varphi^{-1}$. Označme $B = [\psi]^K_K$. Potom $A \cdot B = [\varphi]^K_K \cdot [\psi]^K_K = [\varphi \circ \psi]^K_K = [id]^K_K = E$
-    $\Rightarrow B = A^{-1}$. Tedy $A$ je regulární. Dále $B = [\psi]^K_K = (\psi(e_1)|\psi(e_2)| \dots | \psi(e_n)) \in M_n(\Z)$, protože $\psi: \Z^n \leftarrow \Z^n$.
-
-    $\Rightarrow:$\\
-    $A = [\varphi]^K_K$ je unimodulární. Označme tedy $B = A{-1} \in M_n(\Z)$. Mějme zobrazení $\psi: \Z^n \leftarrow \Z^n$ definované vztahem $\psi(u) = B\cdot u$ pro $u \in \Z^n$. 
-    Potom $\varphi \circ \psi (u) = A\cdot B\cdot u = A\cdot A^{-1}\cdot u = u = B\cdot A\cdot u = \psi \circ \varphi (u)$. Tedy $\psi = \varphi^{-1}$. 
+\phantom{}
+    \begin{itemize}[label={}]
+        \item $\Rightarrow:$
+    Mějme $\psi = \varphi^{-1}$. Označme $B = [\psi]^K_K$. Potom $AB = [\varphi]^K_K[\psi]^K_K = [\varphi \circ \psi]^K_K = [id]^K_K = E$
+    $\implies B = A^{-1}$, tedy $A$ je regulární. Dále $B = [\psi]^K_K = (\psi(e_1)|\psi(e_2)| \dots | \psi(e_n)) \in M_n(\Z)$, protože $\psi: \Z^n \rightarrow \Z^n$.
+    
+        \item $\Leftarrow:$
+    Nechť $A = [\varphi]^K_K$ je unimodulární. Pak z Lemmatu \ref{lemma3_11} je $A$ regulární a $B := A^{-1} \in M_n(\Z)$. Mějme zobrazení $\psi: \Z^n \rightarrow \Z^n$ definované vztahem $\psi(u) = Bu$ pro $u \in \Z^n$. 
+    Potom $$\varphi \circ \psi (u) = ABu = AA^{-1}u = u = BAu = \psi \circ \varphi (u),$$tedy $\psi = \varphi^{-1}$. 
+    \end{itemize}
 \end{proof}
 
 \begin{note}
-    Vezmene mříž s hezkou bází a tu potom schováme $\Rightarrow$ dostaneme kryptosystém.
+    Vezmeme mříž s hezkou bází a tu potom schováme $\rightarrow$ dostaneme kryptosystém.
 \end{note}
 
 \subsection{Hermitův tvar regulární celočíselné matice}
@@ -49,7 +55,7 @@
     \begin{itemize}
         \item $A$ je horní trojúhelníková
         \item na diagonále $A$ jsou kladná čísla
-        \item $\forall i \in \{1, \dots, n\} \forall j \in \{i+1, \dots, n\}: a_{i,j} \in \{0, \dots, a_{i,i}-1\}$
+        \item $\forall i \in \{1, \dots, n\} \ \forall j \in \{i+1, \dots, n\}: \ a_{i,j} \in \{0, \dots, a_{i,i}-1\}$
     \end{itemize}
 \end{definition}
 \begin{note}
@@ -57,78 +63,91 @@
 \end{note}
 
 \begin{theorem}
-    $\forall A \in M_n(\Z)$ regulární $\exists ! B,U\in M_{n}(\Z): B$ je HNF, $U \in GL(n,\Z),\ B = A \cdot U$
+    $\forall A \in M_n(\Z)$ regulární $\exists ! B,U\in M_{n}(\Z): B$ je v HNF, $U \in GL(n,\Z),\ B = AU$.
 \end{theorem}
 \begin{proof}
-    \emph{existence:}\\
-    (algoritmem)\\
-    Na sloupce $A$ opakovaně aplikujeme úpravy, které nemění absolutní hodnotu determinantu:
+\phantom{}
+\begin{itemize}[label={}]
+    \item \emph{existence:}
+    Algoritmem - na sloupce $A$ opakovaně aplikujeme úpravy, které nemění absolutní hodnotu determinantu:
     \begin{itemize}
         \item permutace sloupců
         \item přenásobení sloupce $-1$
         \item přičtení celočíselné lineární kombinace ostatních sloupců k jinému sloupci
     \end{itemize}
-    Potom tedy $A\cdot U_1 \cdot U_2 \cdot \dots \cdot U_t = B$ je HNF a $U = U_1 \cdot U_2 \cdot \dots \cdot U_t \in GL(n,\Z)$.
+    Potom tedy $AU_1U_2\cdots U_t = B$ je HNF a $U = U_1U_2 \cdots U_t \in GL(n,\Z)$.
 
-    Algoritmus:\\
+    \underline{Algoritmus:}
     \begin{enumerate}
         \item $B:= A$
-        \item $i:=n$ \textit{//na rozdíl od Gaussovy eliminace postupujeme od pravého dolního rohu doleva nahoru}
-        \item dokud $b_{i,1}, b_{i,2}, \dots, b_{i,i-1}$ nejsou $0$:
-        \begin{itemize}
-            \item permutujeme prvních $i$ sloupců $B$ tak, aby platilo: $\|b_{i,i}\| = \min\{\|b_{i,j}\|: 1 \leq j \leq i, b_{i,j} \neq 0\}$
-            \item pokud $b_{i,i} < 0$, tak vynásobíve $i-$tý sloupec -1
-            \item pro $j \in \{1, \dots, i-1\}$ označíme $q = \lfloor \frac{b_{i,j}}{b_{i,i}} \rfloor$ a od $j-$tého sloupce odečteme $q-$násobek $i-$tého sloupce. \textit{//dělení se zbytkem}
-        \end{itemize}
-        \item pokud $b_{i,i} < 0$, tak vynásobíve $i-$tý sloupec -1
+        \item $i:=n$ \textit{//}$i =$\textit{index upravovaného řádku; na rozdíl od Gaussovy eliminace postupujeme od pravého dolního rohu doleva nahoru}
+        \item dokud $b_{i,1}, b_{i,2}, \dots, b_{i,i-1}$ nejsou všechny rovny $0$:
+        \begin{enumerate}[label=\roman*]
+            \item permutujeme prvních $i$ sloupců $B$ tak, aby po spermutování platilo:\\ $\|b_{i,i}\| = \min\{\|b_{i,j}\|: 1 \leq j \leq i, b_{i,j} \neq 0\}$
+            \item pokud $b_{i,i} < 0$, tak vynásobíme $i-$tý sloupec -1
+            \item pro $j \in \{1, \dots, i-1\}$ označíme $q = \lfloor \frac{b_{i,j}}{b_{i,i}} \rfloor$ a od $j-$tého sloupce odečteme $q-$násobek $i-$tého sloupce. \textit{//dělení se zbytkem: }$b_{i,j} \rightarrow b_{i,j} \mod b_{i,i}$
+        \end{enumerate}
+        \item pokud $b_{i,i} < 0$, tak vynásobíme $i-$tý sloupec -1
         \item \textit{//čísla vpravo od $b_{i,i}$ taky vydělíme se zbytkem}\\
-        pro $j \in \{i+1, \dots, n\}$ označíme $q = \lfloor \frac{b_{i,j}}{b_{i,i}} \rfloor$ a od $j-$tého sloupce odečteme $q-$násobek $i-$tého sloupce.
+        pro $j \in \{i+1, \dots, n\}$
+        \begin{enumerate}[label=\roman*]
+            \item $q := \lfloor \frac{b_{i,j}}{b_{i,i}} \rfloor$
+            \item od $j-$tého sloupce odečteme $q-$násobek $i-$tého sloupce
+        \end{enumerate}
         \item pokud $i>1$, tak od $i$ odečteme 1 a pokračujeme znovu od kroku $2.$
         \item \textbf{return} B
     \end{enumerate}
     \begin{note}
-        Při výpočtu $B$ může dojít k velké expanzi koeficientů.
+        Při výpočtu $B$ může dojít k velké expanzi koeficientů matice.
+        
+        ($n=20$, matice s koeficienty $0,\dots10 \rightarrow$ koeficienty B mohou být velikosti $10^{1500}$)
+        
+        Algoritmus se v praxi nevyužívá.
     \end{note}
+    
+    \item \emph{jednoznačnost:}
+    Mějme $B = AU$ a $C = AV$ takové, že $B,C,U,V \in M_n(\Z),\ B,C$ jsou v HNF a $U,V \in GL(n, \Z)$.
 
-    \emph{jednoznačnost:}\\
-    Mějme $B = A \cdot U$ a $C = A \cdot V$ takové, že $B,C,U,V \in M_n(\Z),\ B,C$ jsou v HNF a $U,V \in GL(n, \Z)$.
+    Spojením definic matic $B \text{ a } C$ dostaneme $C = BU^{-1}V$. Označme $W = U^{-1}V \in GL(n,\Z)$. Víme, že $W = B^{-1}C$ a tedy je $W$ horní trojúhelníková (protože $B,C$ jsou horní trojuhelníkové) a na diagonále má $\frac{c_{i,i}}{b_{i,i}} \in \Z$ a protože $C$ je v HNF, máme $c_{i,i} > 0$, a tedy i $w_{i,i} > 0$.
+    Jelikož $W = U^{-1}V$, tak $\det(W) = 1$ a tedy $w_{1,1} = w_{2,2} = \dots = w_{n,n} = 1$. Tedy $b_{i,i} = c_{i,i} \ \forall i$.
 
-    Jelikož $B = A \cdot U$ a $C = A \cdot V$, tak $C = B \cdot U^{-1} \cdot V$. Označme $W = U^{-1} \cdot V \in GL(n,\Z)$. Víme, že $W = B^{-1} \cdot C$ a tedy je $W$ horní trojúhelníková a na diagonále má $\frac{c_{i,i}}{b_{i,i}}$.
-    Jelikož $W = U^{-1} \cdot V$, tak $\det(W) = 1$ a tedy i $w_{1,1} = w_{2,2} = \dots = w_{n,n} = 1$. Tedy $b_{i,i} = c_{i,i} \forall i$.
-
-    Chceme dokázat $W = E$. 
-    Označme $z$ prvek v $i-$tém sloupci nad diagonálou, který je nenulový. Označme $j$ řádek, ve kterém leží $z$. Dále označme $C = (c_1\|c_2\|\dots \| c_n) = (b_1\|b_2\|\dots \| b_n) \cdot W = B \cdot W$. Potom $c_i = b_i + zb_j + $ nějaká celočíselná LK $b_1, \dots , b_{j-1}$. 
-    Tedy $c_{j,i} = b_{j,i} + zb_{j,j}$. Ale $c_{j,i} \in \{0, \dots, c_{j,j}-1\}$ a $b_{j,i} \in \{0, \dots, b_{j,j}-1\}$ a tedy $z=0$, protože jinak by $c_{j,i}$ bylo moc velké.
+    Dále $C = BW$. Chceme dokázat $W = E$. Sporem:
+    nechť v $i-$tém sloupci nad diagonálou existuje nenulový prvek (označme ho $z$). Označme $j$ index řádku, ve kterém leží $z$. Dále označme $C = (c_1 | c_2 | \dots | c_n) = (b_1 | b_2 | \dots | b_n)W = BW$. Potom $c_i = b_i + zb_j + $nějaká celočíselná LK $b_1, \dots , b_{j-1}$. 
+    Tedy $c_{j,i} = b_{j,i} + zb_{j,j}$. Ale $c_{j,i} \in \{0, \dots, c_{j,j}-1\}$ a $b_{j,i} \in \{0, \dots, b_{j,j}-1\} \implies$ spor, protože $c_{j,i}$ je moc velké. Tedy všechny prvky nad diagonálou matice $W$ jsou nulové.
+\end{itemize}
 \end{proof}
 
 \subsection{HNF obecné matice}
 \begin{definition}
-    $A \in M_n(\Z)$ je v \emph{HNF}, pokud $\exists r \in \{0, \dots, n\}$ a $f: \{r+1, \dots, n\} \leftarrow \{1, \dots, m\}$ ostře rostoucí takové, že:
+    $A \in M_n(\Z)$ je v \emph{HNF}, pokud $\exists r \in \{0, \dots, n\}$ a $f: \{r+1, \dots, n\} \rightarrow \{1, \dots, m\}$ ostře rostoucí takové, že:
     \begin{itemize}
         \item prvních $r$ sloupců $A$ je nulových
-        \item $\forall j \in \{r+1, \dots, n\}: a_{f(j),j} \geq 1$ \textit{//"pivot"}
-        \item $\forall j \in \{r+1, \dots, n\} \forall f(j) < i \leq m: a_{i,j} = 0$ \textit{//pod pivotem jsou nuly}
-        \item $\forall k < j \in \{r+1, \dots, n\}: 0 \leq a_{f(k),j} < a_{f(k), k}$
+        \item $\forall j \in \{r+1, \dots, n\}: \ a_{f(j),j} \geq 1$ \textit{//"pivot"}
+        \item $\forall j \in \{r+1, \dots, n\} \ \forall f(j) < i \leq m: \ a_{i,j} = 0$ \textit{//pod pivotem jsou nuly}
+        \item $\forall k < j \in \{r+1, \dots, n\}: \ 0 \leq a_{f(k),j} < a_{f(k), k}$
     \end{itemize} 
 \end{definition}
-\begin{theorem}
-    $\forall A \in M_{m,n}(\Z) \exists B \in M_{m,n}(\Z), U \in GL(n,\Z)$, kde $B$ je HNF a $B = A\cdot U$. Navíc matice $B$ je jednoznačně určená.
+
+\begin{theorem}\label{theorem3_19}
+    $\forall A \in M_{m,n}(\Z) \ \exists B \in M_{m,n}(\Z) \ \exists U \in GL(n,\Z)$, kde $B$ je HNF a $B = AU$. Navíc matice $B$ je určená jednoznačně.
 \end{theorem}
 \begin{proof}
-    není
+    Vynecháme.
 \end{proof}
+
 \begin{claim}
-    $A,B \in M_{m,n}(\Z)$. Nechť $\exists U \in GL(n,\Z): A = B\cdot U$. Pak sloupce matice $A$ generují v $\Z^n$ stejnou podgrupu jako sloupce matice $B$.
+    Nechť $A,B \in M_{m,n}(\Z)$. Nechť $\exists U \in GL(n,\Z): A = BU$. Pak sloupce matice $A$ generují v $\Z^n$ stejnou podgrupu jako sloupce matice $B$.
 \end{claim}
 \begin{proof}
-    $ A = (a_1\|a_2\|\dots \|a_n) = (b_1\|b_2\|\dots \| b_n) \cdot U$. Každé $a_i$ je tedy celočíselná LK $b_1, \dots, b_n$. Tedy $\langle a_1, a_2, \dots, a_n \rangle_{\Z^n} \subseteq \langle b_1, b_2, \dots, b_n \rangle_{\Z^n}$. 
-    Jelikož ale také $B = A \cdot U^{-1}$, tak i $\langle b_1, b_2, \dots, b_n \rangle_{\Z^n} \subseteq \langle a_1, a_2, \dots, a_n \rangle_{\Z^n}$
+    Máme $A = (a_1 | a_2 | \dots | a_n) = (b_1 | b_2 | \dots | b_n)U$. Každé $a_i$ je tedy celočíselná LK $b_1, \dots, b_n$. Tedy $\langle a_1, a_2, \dots, a_n \rangle_{\Z^n} \subseteq \langle b_1, b_2, \dots, b_n \rangle_{\Z^n}$. 
+    Jelikož ale také $B = AU^{-1}$, tak i\\$\langle b_1, b_2, \dots, b_n \rangle_{\Z^n} \subseteq \langle a_1, a_2, \dots, a_n \rangle_{\Z^n}$.
 \end{proof}
 
 \begin{consequence}
-    $\forall$ konečně generovaná podgrupa $(\Z^n, +)$ je volná komutativní grupa
+    Každá konečně generovaná podgrupa $(\Z^n, +)$ je volná komutativní grupa.
 \end{consequence}
 \begin{proof}
-    Mějme $G \subseteq (\Z^n,+)$ podgrupu. Označme generátory $G = \langle g_1, g_2, \dots, g_n \rangle$. Mějme $A:= (g_1\|g_2\|\dots \|g_n) \in M_{m,n}(\Z)$.
-    Poslední věta nám implikuje, že $\exists B$ HNF, $V \in GL(n,\Z): B = A\cdot U$. Nenulové sloupce $B$ generují $G$ a jsou lineárně nezávislé $\Rightarrow$ tvoří volnou bázi $G$. \\ \textit{//a taky jsme tím dokázali, že je to mříž}
+    Mějme $G = \langle g_1, g_2, \dots, g_n \rangle \subseteq (\Z^n,+)$.
+    Položme $A:= (g_1 | g_2 | \dots | g_n) \in M_{m,n}(\Z)$.
+    Dle Věty \ref{theorem3_19} $\exists B \in M_{m,n}(\Z)$ v HNF $\exists U \in GL(n,\Z): \ B = AU$. Nenulové sloupce $B$ generují $G$ a jsou lineárně nezávislé $\Rightarrow$ tvoří volnou bázi $G$. \\ \textit{//a taky jsme tím dokázali, že je to mříž}
 \end{proof}

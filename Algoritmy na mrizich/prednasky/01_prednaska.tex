@@ -1,19 +1,21 @@
 %01/10/2021
 \section{Úvod}
 
-\begin{definition}
-Mříž v $n$-dimenzionálním prostoru je množina $L\subseteq\Real^n$ taková, že $\exists b_1,b_2,\ldots,b_d \in \Real^n, \LN \text{(nad $\Real$)}$ tak, že  $L=\Z b_1+Z b_2+\cdots+\Z b_d=\{z_1 b_1 + z_2 b_2 + \cdots + z_d b_d|z_1,\ldots z_d \in \Z\}$.
+\begin{definition}[Mříž]
+Mříž v $n$-dimenzionálním prostoru je množina $L\subseteq\Real^n$ taková, \\ že $\exists b_1,b_2,\ldots,b_d \in \Real^n \ \LN \text{(nad $\Real$)}$ tak, že  $L=\Z b_1+Z b_2+\cdots+\Z b_d \\ (=\{z_1 b_1 + z_2 b_2 + \cdots + z_d b_d \ | \ z_1,\ldots z_d \in \Z\} )$.
 \end{definition}
 
 \begin{note}
-$\{b_1,b_2,\ldots,b_d \}$ se nazývá \emph{báze $L$}. Není určená jednoznačně. $d=\dimenze<\!L\!>$, $d$ je hodnost (rank) určená množinou $L$, $0\leq d\leq n$.
+Množina $\{b_1,b_2,\ldots,b_d \}$ se nazývá \emph{báze $L$}. Není určená jednoznačně. 
+
+$d:=\dimenze<\!L\!>$ je hodnost (rank) určená množinou $L$, $0\leq d\leq n$.
 \end{note}
 
 \subsection{\texorpdfstring{Algebraická struktura mříží}{Algebraická struktura mrizi}}
 \begin{itemize}
     \item $L$ je komutativní grupa (podgrupa grupy $(R^n,+)$)
     \item $L$ je konečně generovaná (báze je množina generátorů)
-    \item $L$ je beztorzní ($\forall z\in \Z\ \forall \underline{l} \in L: z\cdot \underline{l}=0\implies z=0\vee \underline{l}=0$)
+    \item $L$ je beztorzní ($\forall z\in \Z\ \forall \underline{l} \in L: \ z\cdot \underline{l}=0\implies z=0\vee \underline{l}=0$)
 \end{itemize} 
 
 \begin{theorem}
@@ -21,7 +23,7 @@ Každá beztorzní konečně generovaná komutativní grupa je volná.
 \end{theorem}
 
 \begin{consequence}
-$(L,+)\simeq (\Z^d,+)$
+$(L,+)\simeq (\Z^d,+)$ pro $d = \dimenze<\!L\!>$.
 \end{consequence}
 
 \begin{definition}[Euklidovská norma v $\Real^n$]
@@ -34,34 +36,35 @@ $v=\begin{pmatrix}
 v_1 \\
 \vdots \\
 v_n
-\end{pmatrix}$. Potom standradní skalární součin $\cdot$ definujeme jako $u\cdot v= \sum_{i=1}^n u_iv_i=u^Tv$.
+\end{pmatrix}$. Potom standardní skalární součin $\cdot$ definujeme jako $u\cdot v= \sum_{i=1}^n u_iv_i=u^Tv$.
 \emph{Euklidovskou normu} definujeme jako $\|u\|:=\sqrt{u\cdot u}=\big( \sum_{i=1}^n u_iv_i \big)^{\frac{1}{2}}$.
 \end{definition}
 
 \subsection{\texorpdfstring{Rozložení mříže v $\Real^n$}{Rozlození mrize v R\^\ n}}
 
 \begin{definition}[Diskrétní podgrupy $(\Real^n,+)$]
-Podgrupa $G\subseteq(\Real^n,+)$ je \emph{diskrétní}, pokud $$\forall g\in G\ \exists \varepsilon>0 :  G\cap\{v\in\Real^n|\|v-g\|<\varepsilon\}=\{0\}\text{.}$$
+Podgrupa $G\subseteq(\Real^n,+)$ je \emph{diskrétní}, pokud $$\forall g\in G\ \exists \varepsilon>0 : \ G\cap\{v\in\Real^n|\ \|v-g\|<\varepsilon\}=\{0\}\text{.}$$
 \end{definition}
 \begin{observation}
 $G\subseteq(\Real^n,+)$ je diskrétní $\iff \exists\varepsilon>0:
-G\cap\{v\in\Real^n|\|v\|<\varepsilon\}=\{0\}$
+G\cap\{v\in\Real^n| \ \|v\|<\varepsilon\}=\{0\}$
 \end{observation}
 \begin{proof}
-$\Rightarrow \checkmark$
+$\Rightarrow: \checkmark$
 
-$\Leftarrow$ vezmi $\varepsilon>0$ tak, aby platila pravá strana tvrzení. Zvol $g \in G$ libovolné. Potom pro každé $v\in G$ splňující $\|v-g\|<\varepsilon$ platí $v=g$, neboť $v-g\in G$ a tedy z předpokladu $v-g=0$.
+$\Leftarrow$: Vezmi $\varepsilon>0$ tak, aby platila pravá strana tvrzení. Zvol $g \in G$ libovolné. Potom $\forall v\in G$ splňující $\|v-g\|<\varepsilon$ platí $v=g$, neboť $v-g\in G$ a tedy z předpokladu $v-g=0$.
 
-Celkem tedy $G\cap \{v\in\Real^n|\|v-g\|<\varepsilon\}=\{g\}$.
+Celkem tedy $G\cap \{v\in\Real^n| \ \|v-g\|<\varepsilon\}=\{g\}$.
 \end{proof}
 
 \begin{consequence}
-Je-li $G\subseteq (\Real^n,+)$ diskrétní, pak $\forall M\in\Real^+\ |\{g\in G| \|g\|<M\}|<\infty$.
+Je-li $G\subseteq (\Real^n,+)$ diskrétní, pak $\forall M\in\Real^+:\ |\{g\in G \ | \ \|g\|<M\}|<\infty$.
 \end{consequence}
 \begin{proof}
-$B_M:=\{v\in\Real^n| \|v\|<M\}$, $B_\varepsilon:=\{v\in\Real^n| \|v\|<\varepsilon\}$, kde $\varepsilon>0$ splňuje $B_\varepsilon\cap G=\{0\}$.
-$X:=G\cap B_M$, $B_{\frac{\varepsilon}{2}}:=\{v\in\Real^n| \|v\|<\frac{\varepsilon}{2}\}$. 
-Potom $\forall g_1, g_2\in G: g_1\neq g_2\implies(g_1+B_{\frac{\varepsilon}{2}})\cap(g_2+B_{\frac{\varepsilon}{2}})=\emptyset $, neboť $\|g_1-g_2\|\geq \varepsilon$.
+Položme $B_M:=\{v\in\Real^n| \ \|v\|<M\}$, $B_\varepsilon:=\{v\in\Real^n| \ \|v\|<\varepsilon\}$, kde $\varepsilon>0$ splňuje \\ $B_\varepsilon\cap G=\{0\}$.
+Položme dále $X:=G\cap B_M$, $B_{\frac{\varepsilon}{2}}:=\{v\in\Real^n| \ \|v\|<\frac{\varepsilon}{2}\}$. 
+
+Potom $\forall g_1, g_2\in G: \ g_1\neq g_2\implies(g_1+B_{\frac{\varepsilon}{2}})\cap(g_2+B_{\frac{\varepsilon}{2}})=\emptyset $, neboť $\|g_1-g_2\|\geq \varepsilon$. Odtud plyne
 \begin{align*}
     \bigcupdot_{x\in X} x+B_{\frac{\varepsilon}{2}}&\subseteq B_{M+\varepsilon}\\
     |X|\cdot \vol(B_{\frac{\varepsilon}{2}})&\leq \vol(B_{M+\varepsilon})\\
@@ -74,17 +77,23 @@ Každá $n$-dimenzionální mříž je diskrétní podgrupa $(\Real^n,+)$.
 \end{claim}
 
 \begin{proof}
-Indukcí dle hodnosti mříže $L(d)$. (Případ $d=0$ platí, ale vynecháme jej.) \\
-\fbox{$d=1$} tj. $\exists _1 \in \Real^n$, $b_1\neq 0$, $L=\Z b_1$ $0\neq b\in L\iff l=z b_1,\ z\in \Z\setminus\{0\}$.\\
-$\|l\|=|z|\cdot\|b_1\|\geq\|b_1\|\implies \varepsilon=\|b_1\|$ projde.\\
-\fbox{$d>1$} $\{b_1,\ldots,b_d\}$ báze L. Definujme $L_0=\Z b_1+\Z b_2 + \cdots +\Z b_{d-1}$. 
-To odpovídá bázi $\{b_1,\ldots,b_{d-1}\}$, potom z indukčního předpokladu $\exists \varepsilon_0>0$ takové, že $\forall l\in L_0\setminus\{0\}\  \|l\|\geq \varepsilon_0$.
-Platí, že $\Real^n=\langle L_0\rangle\oplus\langle L_0\rangle^\perp$. Z toho plyne $\forall v\in\Real^n\ \exists v_0, v^\perp\in\Real^n\ v=v_0+v^\perp,\ v_0\in\langle L_0\rangle,\ v^\perp\in\langle L_0 \rangle^\perp$.$$0\neq l = z_1 b_1+z_2 b_2+\cdots+z_d b_d,\ z_1,\ldots,z_d\in\Z$$
+Indukcí dle hodnosti mříže $L(d)$. (Případ $d=0$ platí, ale vynecháme jej.)
+
+\fbox{$d=1$} $\exists 0 \neq b_1 \in \Real^n$: $L=\Z b_1$. Pak $0\neq l\in L\iff l=z b_1,\ z\in \Z\setminus\{0\}$.\\
+Pro normu $l$ pak platí $\|l\|=|z|\cdot\|b_1\|\geq\|b_1\|\implies \varepsilon=\|b_1\|$ projde.
+
+\fbox{$d>1$} Nechť $\{b_1,\ldots,b_d\}$ je báze L. Definujme $L_0:=\Z b_1+\Z b_2 + \cdots +\Z b_{d-1}$. 
+Pak $\{b_1,\ldots,b_{d-1}\}$ je báze $L_0$ a z indukčního předpokladu $\exists \varepsilon_0>0$ takové, že $\forall l\in L_0\setminus\{0\}:\  \|l\|\geq \varepsilon_0$.
+Platí, že $\Real^n=\langle L_0\rangle\oplus\langle L_0\rangle^\perp$ a proto $\forall v\in\Real^n\ \exists v_0, v^\perp\in\Real^n$ splňující $v=v_0+v^\perp,\ v_0\in\langle L_0\rangle,\ v^\perp\in\langle L_0 \rangle^\perp$. 
+
+Ať pro $l \in L$ platí $$0\neq l = z_1 b_1+z_2 b_2+\cdots+z_d b_d,\ z_1,\ldots,z_d\in\Z.$$Pak buď 
 
 \begin{enumerate}
     \item $z_d=0\implies l\in L_0\setminus\{0\}\overset{\text{I.P.}}{\implies}\|l\|\geq \varepsilon_0$ a důkaz je hotov, nebo
-    \item $z_d\neq0\ \ldots\ l=l_0+l^\perp\implies\|l\|\geq\|l^\perp\|=\|z_db_d^\perp\|$\\
-    $b_d\notin L_0$, neboť $b_1,\ldots,b_d$ jsou $\LN\implies b_d=\underset{\in L_0}{b_{d_0}}+\underset{\neq\emptyset}{b_d^\perp} \implies \|l\|\geq|z_d|\cdot \|b_d^\perp\|\geq\|b_d^\perp\|>0$.\\
+    \item $z_d\neq0$: pak $ l=l_0+l^\perp, \ l_0 \in L_0, \ l^\perp \in \langle L_0 \rangle^\perp \implies\|l\| = \|l_0 + l^\perp \| \geq \|l^\perp\| = \|z_db_d^\perp\|$.
+    
+    $b_d\notin L_0$, neboť $b_1,\ldots,b_d$ jsou $\LN\implies b_d=\underset{\in L_0}{b_{d_0}}+\underset{\neq 0}{b_d^\perp} \implies \|l\|\geq|z_d|\cdot \|b_d^\perp\|\geq\|b_d^\perp\|>0$.
+    
     Tedy platí, že $\|l\|\geq\min\{\varepsilon_0,\|b_d^\perp\|\}$
 \end{enumerate}
 \end{proof}
@@ -93,13 +102,13 @@ Platí, že $\Real^n=\langle L_0\rangle\oplus\langle L_0\rangle^\perp$. Z toho p
 SVP - shortest vector problem
 
 \begin{definition}[První postupné minimum]
-Nechť $0\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. Definujeme \emph{první postupné minimum} 
+Nechť $\{0\}\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. Definujeme \emph{první postupné minimum} 
 $\lambda_1(L):=\min\{\|v\|:0\neq v\in L\}$. 
-Toto minimum existuje, neboť $\forall l: 0\neq l\in L,\ \{v\in L\setminus\{0\}:\|v\|\leq\|l\|\}$ je konečná.
+Toto minimum existuje, neboť $\forall 0 \neq l \in L$ je množina $\{v\in L\setminus\{0\}:\|v\|\leq\|l\|\}$ konečná.
 \end{definition}
 
 \begin{definition}[Nejkratší vektor $L$] 
-Nechť $0\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. $v$ je \emph{nejkratší vektor} $L$, pokud $\|v\|=\lambda_1(L)$
+Nechť $\{0\}\neq L\subseteq(\Real^n,+)$ je $n$-dimenzionální mříž. $v$ je \emph{nejkratší vektor} $L$, pokud $\|v\|=\lambda_1(L)$
 \end{definition}
 
 \begin{note}
@@ -110,8 +119,9 @@ $v$ je nejkratší vektor $L\iff -v$ je nejkratší vektor $L$.
 $L=\Z^2\subseteq(\Real^2,+)$ má tyto nejkratší vektory: $\vect{0}{1},\vect{0}{-1},\vect{1}{0},\vect{-1}{0}$.
 \end{note}
 
-\begin{definition}[Formulace $\SVP$]\phantom{}\\
-Vstup: Mříž zadaná bází.\\
+\begin{definition}[Formulace SVP]\phantom{}\\
+Vstup: Mříž zadaná bází.
+
 Výstup: Nejkratší vektor $L$ (stačí jeden libovolný).
 \end{definition}
 
@@ -119,11 +129,14 @@ Výstup: Nejkratší vektor $L$ (stačí jeden libovolný).
 $\SVP$ je $\NP$-hard ($\,\NP$-těžký).
 \end{theorem}
 
-\begin{definition}[$\SVP_\gamma$]
-(aproximační verze $\SVP$)\\
-Definujeme aproximační faktor $\gamma:\N\rightarrow\Real^+$.\\
-Vstup $\SVP_\gamma$: $n$-dimenzionální mříž zadaná bází.\\
-Výstup: $0\neq v\in L$ takový, že $\forall 0\neq v \in L: \gamma(n)\cdot\|u\|\geq\|v\|$.
+\begin{definition}[SVP$_\gamma$]
+(aproximační verze $\SVP$)
+
+Definujeme aproximační faktor $\gamma:\N\rightarrow\Real^+$.
+
+Vstup $\SVP_\gamma$: $n$-dimenzionální mříž zadaná bází.
+
+Výstup: $0\neq v\in L$ takový, že $\forall 0\neq u \in L: \gamma(n)\cdot\|u\|\geq\|v\|$.
 \end{definition}
 
 \begin{theorem}[A. K. Lenstra, H. W. Lenstra, L. G. Lowász, 1982]

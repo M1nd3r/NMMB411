@@ -1,1 +1,119 @@
 %29/10/2021
+\subsection{Determinant mříže}
+\underline{Značení:}
+$\{b_1, \dots b_m\} \in \Real^n$ báze mříže $L = \Z b_1 + \dots + \Z b_m$.\\
+$n$ \ldots \emph{dimenze} mříže $L$\\
+$m$ \ldots \emph{hodnost} mříže $L$\\
+$m \leq n$
+
+\emph{úplná} mříž \ldots $m = n$\\
+\emph{celočíselná} mříž \ldots $L \subseteq \Z^n$ 
+
+\begin{claim}
+Nechť $B = \{b_1, b_2, \dots b_m\}$, $B' = \{b'_1, b'_2, \dots b'_m\}$ jsou LN množiny v $\Real^n$. Pak
+
+$B$ a $B'$ jsou báze stejné mříže $\iff \ \exists U \in \GL(n,\Z): \ \left( b_1| \ \dots | b_m\right) = \left( b'_1 | \dots | b'_m \right)U$.
+\end{claim}
+\begin{proof}
+\begin{itemize}[label={}]
+\phantom{}
+    \item $\Rightarrow$: Nechť $L = \Z b_1+\dots+\Z b_m = \Z b'_1 + \dots + \Z b'_m$. Pro každé $i$ vyjádříme $b_i = \sum_{j=1}^m u_{j,i}b'_j$, kde $u_{j,i} \in \Z$. Položme $U := \left( u_{i,j} \right)_{i,j}$. Pak platí $\left( b_1| \ \dots | b_m\right) = \left( b'_1 | \dots | b'_m \right)U$.
+    
+    Analogicky vyjádříme $b'_i = \sum_{j=1}^m v_{j,i}b_j$, kde $v_{j,i} \in \Z$. Položíme $V := \left( v_{i,j}\right)_{i,j}$,\\pak $\left( b'_1| \ \dots | b'_m\right) = \left( b_1 | \dots | b_m \right)V$.
+    
+    Nyní $\left( b_1 | \dots | b_m \right) = \left( b'_1| \ \dots | b'_m\right)U = \left( b_1 | \dots | b_m \right)VU \implies \left( b_1 | \dots | b_m \right)\left(VU-E\right) = 0$, a protože $b_1,\dots b_m$ jsou LN a $VU - E$ je čtvercová řádu $m$, platí $VU = E$, neboli $V=U^{-1}$, a protože $V \in M_n(\Z)$, máme $U \in \GL(n,\Z)$.
+    
+    \item $\Leftarrow$: Máme $\left( b_1| \ \dots | b_m\right) = \left( b'_1 | \dots | b'_m \right)U$. Protože $U \in M_n(\Z)$, je každé $b_i$ celočíselnou LK vektorů $b'_1,\dots,b'_m \implies \Z b_1 + \dots + \Z b_m \subseteq \Z b'_1 + \dots + \Z b'_m$.
+    
+    Naopak, protože $U \in \GL(n,\Z) \implies V = U^{-1} \in M_n(\Z)$, máme $\left( b'_1| \ \dots | b'_m\right) = \left( b_1 | \dots | b_m \right)V$ a tedy $\Z b'_1 + \dots + \Z b'_m \subseteq \Z b_1 + \dots + \Z b_m$.
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+Pro úplnou mříž $L \subseteq \Real^n$ s bází $B=\{b_1,\dots b_n\}$ definujeme \emph{determinant mříže} L jako $d(L) := |\det(b_1 | \dots | b_n)|$.
+\end{definition}
+
+\begin{note}
+Nechť $B=\{b_1,\dots b_n\}$, $B'=\{b'_1,\dots b'_n\}$ jsou dvě báze mříže $L \subseteq \Real^n$. Dle tvrzení $\exists U \in \GL(n\Z): \ \left( b_1| \ \dots | b_n\right) = \left( b'_1 | \dots | b'_n \right)U$, tedy $|\det(b_1 | \dots | b_n)| = |\det(b'_1 | \dots | b'_n)|\\ \implies d(L)$ nezávisí na volbě báze.
+\end{note}
+
+\begin{definition}
+Pro obecnou mříž $L \subseteq \Real^n$ s bází $\{b_1,\dots b_m\}$ položíme $M = \left( b_1 | \dots | b_m \right)$. Pak definujeme $d(L) := \sqrt{\det(M^TM)}$.
+\end{definition}
+
+\subsection{Fundamentální rovnoběžnostěn}
+\begin{definition}
+Pro $B = \{b_1,\dots b_m\} \in \Real^n$ LN definujeme \emph{fundamentální rovnoběžnostěn} $B$ jako $\mathcal{F}(B) := \{\sum_{i=1}^m r_i b_i | \ r_1,\dots,r_m \in [0,1)\}$.
+\end{definition}
+
+\begin{lemma}\label{lemma3_35}
+Nechť $B = \{b_1,\dots b_m\} \in \Real^n$ je LN, $L = \Z b_1 + \dots + \Z b_m$. Pak 
+\begin{equation*}
+    <\!B\!>_{\Real} = \bigcupdot_{l \in L} l + \mathcal{F}(B), \text{ kde } l + \mathcal{F}(B) = \{l + v | \ v \in \mathcal{F}(B)\}.
+\end{equation*}
+Speciálně, je-li $L$ úplná, pak
+\begin{equation*}
+    \Real^n = \bigcupdot_{l \in L} l + \mathcal{F}(B).
+\end{equation*}
+\end{lemma}
+\begin{proof}
+Nechť $v \in <\!B\!>_{\Real}$, tedy $v = r_1 b_1 + \dots + r_m b_m, \ r_i \in \Real$. Položme $z_i := \lfloor r_i \rfloor \in \Z$\\a $l' := z_1 b_1 + \dots + z_m b_m \in L$. Pak $v = l' + v - l' = l' + \sum_{i=1}^m (r_i - z_i)b_i \in l' + \mathcal{F}(B)$, protože\\$r_i - z_i \in [0,1)$, a tedy $$<\!B\!>_{\Real} = \bigcup_{l \in L} l + \mathcal{F}(B).$$
+Dále ať $l_1, l_2 \in L, \ l_1 \neq l_2$. Chceme ukázat, že platí $\left( l_1 + \mathcal{F}(B) \right) \cap \left( l_2 + \mathcal{F}(B) \right) = \emptyset$. Sporem:
+
+Ať $f_1, f_2 \in \mathcal{F}(B)$ splňují $l_1 + f_1 = l_2 + f_2$. Pak $l_1 - l_2 = f_2 - f_1$. Všimneme si, že $l_1 - l_2$ je celočíselná LK vektorů $b_1,\dots,b_m$, a $f_2 - f_1 = \sum_{i=1}^m (r_i - s_i)b_i$ pro $r_i, s_i \in [0,1)$, tedy $r_i - s_i \in (-1,1)$, a z lineární nezávislosti vektorů $b_1,\dots,b_m$ pak plyne $r_i - s_i = 0 \ \forall i \implies l_1 = l_2$, spor.
+\end{proof}
+
+\begin{note}
+Je-li $L \in \Real^n$ úplná, pak $d(L)=\vol(\mathcal{F}(B))$, kde $B$ je nějaká báze $L$.
+\end{note}
+
+\begin{claim}
+Nechť $L \in \Real^n$ je mříž s hodností $m$, $B = \{b_1,\dots b_m\} \subseteq L$ je LN. 
+
+Pak $B$ je báze $L \iff \mathcal{F}(B) \cap L = \{0\}$.
+\end{claim}
+\begin{proof}
+\phantom{}
+\begin{itemize}[label={}]
+    \item $\Rightarrow$: Protože je $B$ bází $L$, je dle Lemmatu \ref{lemma3_35} $<\!B\!>_{\Real} = \bigcupdot_{l \in L} l + \mathcal{F}(B)$, a proto je $0$ jediný prvek v $0 + \mathcal{F}(B) = \mathcal{F}(B)$.
+    
+    \item $\Leftarrow$: Pro $l \in L \ \exists r_1, \dots r_m \in \Real, \ l = \sum_{i=1}^m r_i b_i.$ Položme pro všechna $i \in \{1,\dots m\}$ $z_i := \lfloor r_i \rfloor \in \Z$ a $l' := \sum_{i=1}^m z_i b_i \in L$. Potom
+    \begin{equation*}
+        L \ni l - l' = \sum_{i=1}^m \left(r_i - z_i \right)b_i \in \mathcal{F}(B), \text{ protože }r_i - z_i \in [0,1),
+    \end{equation*}
+    a jelikož $L \cap \mathcal{F}(B) = \{0\}$, tak $l = l' \in \Z b_1 + \dots + \Z b_m$.
+\end{itemize}
+\end{proof}
+
+\subsection{Minkowského odhad}
+\underline{Připomenutí:} Pro $L \subseteq \Real^n$ definujeme \emph{první postupné minimum} $\lambda_1(L) := \min\{\|v\| \ | \ 0 \neq v \in L\}$.
+
+\begin{theorem}[Minkowski]
+Nechť $L \subseteq \Real^n$ je úplná mříž. Pak $\lambda_1(L) \leq \sqrt{n}\sqrt[n]{d(L)}$.
+\end{theorem}
+
+Budeme k tomu směrovat.
+
+\begin{definition}
+\phantom{}
+\begin{enumerate}
+    \item \emph{Objem} v $\Real^n$: Pro $S = [a_1,b_1] \times \dots \times [a_n,b_n]$ definujeme $\vol(S) := (b_1 - a_1)\cdot\ldots\cdot(b_n - a_n)$.
+    
+    Pro obecnou $S \subseteq \Real^n$ definujeme $\lambda^*(S)=\inf\{\sum_{i=1}^\infty \vol(X_i) \ | \ X_i \text{ jsou kvádry, }S \subseteq \bigcup_{i=1}^\infty X_i \}$.
+    
+    \item Nechť $A \subseteq \Real^n$. Pokud $\forall S \subseteq \Real^n: \ \lambda^*(S) = \lambda^*(A \cap S) + \lambda^*(A \setminus S)$, pak $A$ je \emph{měřitelná} a definujeme $\vol(A) := \lambda^*(A)$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Blichfeldt]\label{blichfeldt}
+Nechť $L \in \Real^n$ je úplná mříž, $S \subseteq \Real^n$ je měřitelná, $\vol(S) > d(L)$. Pak $\exists s_1, s_2 \in S, s_1 \neq s_2: \ s_1 - s_2 \in L$.
+\end{theorem}
+\begin{proof}
+Zvolme $B$ bázi $L$. Protože je $L$ úplná, je dle Lemmatu \ref{lemma3_35} $\Real^n = \bigcupdot_{l \in L} l + \mathcal{F}(B)$. Pak můžeme psát $S = \bigcupdot_{l \in L} \left( (l + \mathcal{F}(B)) \cap S \right)$.
+
+Pro $l \in L$ je množina $l + \mathcal{F}(B)$ je měřitelná, a proto je měřitelná taky $(l + \mathcal{F}(B)) \cap S$, protože průnik měřitelných množin je měritelný. Jest $\vol(l + \mathcal{F}(B)) = \vol(\mathcal{F}(B)) = d(L) \ \forall l \in L$, a jelikož je disjunktné spočetné sjednocení měřitelných množin měřitelné a jeho objem je součet objemů jeho částí, platí $\vol(S) = \sum_{l \in L} \vol((l + \mathcal{F}(B)) \cap S)$.
+
+Dále $\forall l \in L$ položme $$X_l := ((l + \mathcal{F}(B)) \cap S) - l = \{ x-l \ | \ x \in (l + \mathcal{F}(B))\cap S\} \subseteq \mathcal{F}(B).$$ Pak $X_l$ jsou měřitelné a $\vol(X_l) = \vol((l + \mathcal{F}(B))\cap S)$.
+
+Dále pokračujeme sporem: pokud platí, že $\{X_l \ | \ l \in L\}$ je systém po dvou disjunktních množin, pak $$\bigcupdot_{l \in L} X_l \subseteq \mathcal{F}(B), \ \vol(\bigcupdot_{l \in L} X_l) = \sum_{l \in L} \vol(X_l) = \sum_{l \in L} \vol((l + \mathcal{F}(B))\cap S) = \vol(S).$$ Z předpokladu ovšem $\vol(S) > d(L)$, a tedy $$\vol(\bigcupdot_{l \in L} X_l) = \vol(S) > d(L) = \vol(\mathcal{F}(B)),$$spor. Tudíž $\exists l_1, l_2 \in L, \ l_1 \neq l_2: \ X_{l_1} \cap X_{l_2} \neq \emptyset$. Zvolme $z \in X_{l_1} \cap X_{l_2}$ a položme $s_1 := l_1 + z$, $s_2 := l_2 + z$. Pak $s_1, s_2 \in S$, dále $l_1 \neq l_2 \implies s_1 \neq s_2$ a platí $s_1 - s_2 = l_1 + z - l_2 - z = l_1 - l_2 \in L$.
+\end{proof}
